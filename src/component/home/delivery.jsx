@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Box, Grid, Card, Typography } from '@mui/material';
+import {Box, Grid, Card, Typography, Container} from '@mui/material';
 import { Build, Verified, AccessTime } from '@mui/icons-material';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -59,57 +59,59 @@ function Delivery() {
             ref={containerRef}
             sx={{ flexGrow: 1, my: 4, py: 4, backgroundColor: '#1A1A1A' }}
         >
-            <Typography
-                variant="h4"
-                component="h2"
-                sx={{
-                    textAlign: 'center',
-                    fontSize: { xs: '24px', sm: '32px', md: '40px' },
-                    fontWeight: 600,
-                    mb: 7,
-                    color: '#fff',
-                    lineHeight: 1.3,
-                }}
-            >
-                Smart Solutions for Modern Needs
-            </Typography>
+            <Container maxWidth={'xl'}>
+                <Typography
+                    variant="h4"
+                    component="h2"
+                    sx={{
+                        textAlign: 'center',
+                        fontSize: { xs: '24px', sm: '32px', md: '40px' },
+                        fontWeight: 600,
+                        mb: 7,
+                        color: '#fff',
+                        lineHeight: 1.3,
+                    }}
+                >
+                    Smart Solutions for Modern Needs
+                </Typography>
 
-            <Grid container spacing={4} justifyContent="center">
-                {services.map((service, index) => (
-                    <Grid item key={index}>
-                        <Card
-                            className="service-card"
-                            sx={{
-                                width: 350,
-                                backgroundColor: '#2C2C2C',
-                                color: '#FFFFFF',
-                                textAlign: 'center',
-                                borderRadius: 3,
-                                p: 3,
-                                height: 250,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                boxShadow: 3,
-                                transition: '0.3s',
-                                '&:hover': {
-                                    boxShadow: 6,
-                                    transform: 'translateY(-5px)',
-                                },
-                            }}
-                        >
-                            <Box sx={{ mb: 2 }}>{service.icon}</Box>
-                            <Typography variant="h6" gutterBottom sx={{ color: '#fff' }}>
-                                {service.title}
-                            </Typography>
-                            <Typography variant="body2" sx={{ color: '#B2BDC6', px: 2 }}>
-                                {service.description}
-                            </Typography>
-                        </Card>
-                    </Grid>
-                ))}
-            </Grid>
+                <Grid container spacing={4} justifyContent="center">
+                    {services.map((service, index) => (
+                        <Grid item key={index}>
+                            <Card
+                                className="service-card"
+                                sx={{
+                                    width: 350,
+                                    backgroundColor: '#2C2C2C',
+                                    color: '#FFFFFF',
+                                    textAlign: 'center',
+                                    borderRadius: 3,
+                                    p: 3,
+                                    height: 250,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    boxShadow: 3,
+                                    transition: '0.3s',
+                                    '&:hover': {
+                                        boxShadow: 6,
+                                        transform: 'translateY(-5px)',
+                                    },
+                                }}
+                            >
+                                <Box sx={{ mb: 2 }}>{service.icon}</Box>
+                                <Typography variant="h6" gutterBottom sx={{ color: '#fff' }}>
+                                    {service.title}
+                                </Typography>
+                                <Typography variant="body2" sx={{ color: '#B2BDC6', px: 2 }}>
+                                    {service.description}
+                                </Typography>
+                            </Card>
+                        </Grid>
+                    ))}
+                </Grid>
+            </Container>
         </Box>
     );
 }

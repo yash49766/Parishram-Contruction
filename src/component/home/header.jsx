@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Box, Typography, IconButton } from '@mui/material';
+import {Box, Typography, IconButton, Container} from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -51,6 +51,7 @@ function Header() {
 
     return (
         <Box sx={{ bgcolor: '#1a1a1a', color: 'white', p: 4, pt: 20 }}>
+            <Container maxWidth={'xl'}></Container>
             {/* Title Section */}
             <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
                 <Typography

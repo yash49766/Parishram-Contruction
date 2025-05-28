@@ -36,12 +36,13 @@ const contactInfo = [
 ];
 
 const quickLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Services', href: '/services' },
-    { label: 'Gallery', href: '/gallery' },
-    { label: 'Contact', href: 'contact' },
+    { label: 'Home', path: '/' },
+    { label: 'About', path: '/about' },
+    { label: 'Services', path: '/services' },
+    { label: 'Gallery', path: '/gallery' },
+    { label: 'Contact', path: 'contact' },
 ];
+
 const services = ['Building Construction', 'Architecture Design', 'Building Renovation', 'Flooring and Roofing'];
 
 const socialLinks = [

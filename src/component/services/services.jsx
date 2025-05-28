@@ -109,7 +109,7 @@ function Services() {
 
     return (
         <Box sx={{ py: { xs: 4, md: 8 }, backgroundColor: '#f5f3f1' }}>
-            <Container maxWidth="lg">
+            <Container maxWidth="xl">
                 <Box sx={{ textAlign: 'center', mb: 6 }}>
                     <Typography variant="h3" component="h2" sx={{ fontWeight: 'bold', mb: 2, color: '#333' }}>
                         Service We're Offering

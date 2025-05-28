@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { Box, Typography } from '@mui/material';
+import {Box, Container, Typography} from '@mui/material';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -105,85 +105,89 @@ const Workingprocess = () => {
     }, []);
 
     return (
-        <Box
-            ref={containerRef}
-            sx={{ py: { xs: 6, md: 10 }, px: 2, textAlign: 'center' }}
-        >
-            <Typography variant="h6" sx={{ color: '#FF6600', fontWeight: 700, mb: 1 }}>
-                WORKING PROCESS
-            </Typography>
-            <Typography variant="h4" sx={{ fontWeight: 700, mb: { xs: 6, md: 8 } }}>
-                Exploration To Processing
-            </Typography>
-
+        <>
+        <Container maxWidth={'xl'}>
             <Box
-                sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexWrap: 'wrap',
-                    gap: { xs: 3, md: 5 }
-                }}
+                ref={containerRef}
+                sx={{ py: { xs: 6, md: 10 }, px: 2, textAlign: 'center' }}
             >
-                {steps.map((step, index) => {
-                    const imageSize = index === 1 ? { xs: 220, md: 280 } : { xs: 180, md: 220 };
+                <Typography variant="h6" sx={{ color: '#FF6600', fontWeight: 700, mb: 1 }}>
+                    WORKING PROCESS
+                </Typography>
+                <Typography variant="h4" sx={{ fontWeight: 700, mb: { xs: 6, md: 8 } }}>
+                    Exploration To Processing
+                </Typography>
 
-                    return (
-                        <React.Fragment key={step.id}>
-                            <Box
-                                className="step"
-                                sx={{ position: 'relative', textAlign: 'center', maxWidth: 300 }}
-                            >
+                <Box
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexWrap: 'wrap',
+                        gap: { xs: 3, md: 5 }
+                    }}
+                >
+                    {steps.map((step, index) => {
+                        const imageSize = index === 1 ? { xs: 220, md: 280 } : { xs: 180, md: 220 };
+
+                        return (
+                            <React.Fragment key={step.id}>
                                 <Box
-                                    component="img"
-                                    src={step.image}
-                                    alt={step.title}
-                                    className="step-image"
-                                    sx={{
-                                        width: imageSize,
-                                        height: imageSize,
-                                        borderRadius: '50%',
-                                        objectFit: 'cover',
-                                        mx: 'auto',
-                                        boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-                                    }}
-                                />
-                                <Box
-                                    className="step-id"
-                                    sx={{
-                                        position: 'absolute',
-                                        top: 10,
-                                        right: 'calc(50% - 90px)',
-                                        backgroundColor: '#FF6600',
-                                        color: '#fff',
-                                        px: 1.5,
-                                        py: 0.5,
-                                        borderRadius: '8px',
-                                        fontWeight: 'bold',
-                                        fontSize: '0.9rem'
-                                    }}
+                                    className="step"
+                                    sx={{ position: 'relative', textAlign: 'center', maxWidth: 300 }}
                                 >
-                                    {step.id}
+                                    <Box
+                                        component="img"
+                                        src={step.image}
+                                        alt={step.title}
+                                        className="step-image"
+                                        sx={{
+                                            width: imageSize,
+                                            height: imageSize,
+                                            borderRadius: '50%',
+                                            objectFit: 'cover',
+                                            mx: 'auto',
+                                            boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                                        }}
+                                    />
+                                    <Box
+                                        className="step-id"
+                                        sx={{
+                                            position: 'absolute',
+                                            top: 10,
+                                            right: 'calc(50% - 90px)',
+                                            backgroundColor: '#FF6600',
+                                            color: '#fff',
+                                            px: 1.5,
+                                            py: 0.5,
+                                            borderRadius: '8px',
+                                            fontWeight: 'bold',
+                                            fontSize: '0.9rem'
+                                        }}
+                                    >
+                                        {step.id}
+                                    </Box>
+
+                                    <Typography variant="h6" className="step-title" sx={{ fontWeight: 700, mt: 2 }}>
+                                        {step.title}
+                                    </Typography>
+                                    <Typography variant="body2" className="step-desc" sx={{ color: 'text.secondary', mt: 1, mb: 2 }}>
+                                        {step.description}
+                                    </Typography>
                                 </Box>
 
-                                <Typography variant="h6" className="step-title" sx={{ fontWeight: 700, mt: 2 }}>
-                                    {step.title}
-                                </Typography>
-                                <Typography variant="body2" className="step-desc" sx={{ color: 'text.secondary', mt: 1, mb: 2 }}>
-                                    {step.description}
-                                </Typography>
-                            </Box>
-
-                            {index < steps.length - 1 && (
-                                <Box className="arrow" sx={{ display: { xs: 'none', md: 'block' }, mx: 2 }}>
-                                    <ArrowRightSvg />
-                                </Box>
-                            )}
-                        </React.Fragment>
-                    );
-                })}
+                                {index < steps.length - 1 && (
+                                    <Box className="arrow" sx={{ display: { xs: 'none', md: 'block' }, mx: 2 }}>
+                                        <ArrowRightSvg />
+                                    </Box>
+                                )}
+                            </React.Fragment>
+                        );
+                    })}
+                </Box>
             </Box>
-        </Box>
+        </Container>
+        </>
     );
 };
 
