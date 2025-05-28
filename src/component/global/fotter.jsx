@@ -19,6 +19,7 @@ import {
 } from '@mui/icons-material';
 import bgImage from '../../assets/global/footer-bg.jpg';
 import logo from '../../assets/global/Your paragraph text (2).png';
+import {NavLink} from "react-router-dom";
 
 const contactInfo = [
     { icon: <Phone sx={{ mr: 1, mt: 0.3, color: '#B2BDC6' }} fontSize="small" />, text: '+91 99258 41698' },
@@ -34,7 +35,13 @@ const contactInfo = [
     },
 ];
 
-const quickLinks = ['Home', 'About', 'Blog Styles', 'Services', 'Contact Us'];
+const quickLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'Services', href: '/services' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'Contact', href: 'contact' },
+];
 const services = ['Building Construction', 'Architecture Design', 'Building Renovation', 'Flooring and Roofing'];
 
 const socialLinks = [
@@ -95,7 +102,7 @@ const Footer = () => {
                                     transition: "all 0.3s ease-in-out",
                                     color: "white",
                                     "&:hover": {
-                                        backgroundColor: "#000",
+                                        backgroundColor: "#FF5722",
                                         color: "white",
                                     },
                                 }}
@@ -107,23 +114,33 @@ const Footer = () => {
                 </Grid>
 
                 {/* Quick Links */}
-                <Grid item size={{ xs: 12, sm: 6,md:2 }}>
+                <Grid item xs={12} sm={6} md={2}>
                     <Typography sx={{ fontSize: 28, fontWeight: 500, pb: 3 }}>
                         Navigate
                     </Typography>
                     {quickLinks.map((link, i) => (
-                        <Typography
+                        <NavLink
                             key={i}
-                            sx={{
-                                mb: 2,
+                            to={link.path}
+                            style={{
+                                display: 'block',
+                                marginBottom: 8,
                                 color: '#B2BDC6',
-                                cursor: 'pointer',
+                                textDecoration: 'none',
                                 transition: 'color 0.3s',
-                                '&:hover': { color: '#fff' }
                             }}
+                            className={({ isActive }) =>
+                                isActive ? 'active-link' : undefined
+                            }
                         >
-                            {link}
-                        </Typography>
+                            <Typography
+                                sx={{
+                                    '&:hover': { color: '#fff' }
+                                }}
+                            >
+                                {link.label}
+                            </Typography>
+                        </NavLink>
                     ))}
                 </Grid>
                 <Grid item size={{ xs: 12, sm: 6,md:2 }}>

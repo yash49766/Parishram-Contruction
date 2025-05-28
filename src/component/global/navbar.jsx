@@ -12,20 +12,23 @@ import {
     useTheme,
     useMediaQuery,
     Link as MuiLink,
-    Backdrop,
-    Divider,
 } from '@mui/material';
 import { Search, Menu as MenuIcon } from '@mui/icons-material';
 import Logo from '../../assets/global/Your paragraph text (2).png'; // Adjust path as needed
-import SampleImg from '../../assets/global/logo.png'; // Add sample images
-import miniImg1 from '../../assets/home/miniImg1.jpg'
-import miniImg2 from '../../assets/home/miniImg2.jpg'
-import miniImg3 from '../../assets/home/miniImg3.avif'
-import miniImg4 from '../../assets/home/miniImg4.avif'
+import miniImg1 from '../../assets/home/miniImg1.jpg';
+import miniImg2 from '../../assets/home/miniImg2.jpg';
+import miniImg3 from '../../assets/home/miniImg3.avif';
+import miniImg4 from '../../assets/home/miniImg4.avif';
 
 const images = [miniImg1, miniImg2, miniImg3, miniImg4];
 
-const navLinks = ['Home', 'About', 'Services', 'Portfolio', 'Blog', 'Contact'];
+const navLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'Services', href: '/services' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'Contact', href: 'contact' },
+];
 
 function Navbar() {
     const theme = useTheme();
@@ -53,17 +56,17 @@ function Navbar() {
                 sx={{
                     backgroundColor: scrolled ? 'white' : 'transparent',
                     color: scrolled ? 'black' : 'black',
-                    backdropFilter: 'blur(10px)',
+                    // backdropFilter: 'blur(10px)',
                     px: 3,
-                    py:scrolled ? 2 : 3,
-                    borderBottom: scrolled ? '1px solid rgba(0, 0, 0, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)',
+                    py: scrolled ? 2 : 3,
+                    // borderBottom: scrolled ? '1px solid rgba(0, 0, 0, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)',
                     transition: 'all 0.3s ease',
                 }}
             >
                 <Toolbar disableGutters sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
                     {/* Logo */}
                     <Box display="flex" alignItems="center">
-                        <Box component="img" src={Logo} alt="Logo" sx={{ width: 75, height: 75, mr: 2,borderRadius:'50%' }} />
+                        <Box component="img" src={Logo} alt="Logo" sx={{ width: 75, height: 75, mr: 2, borderRadius: '50%' }} />
                         <Box>
                             <Box sx={{ fontWeight: 700, color: scrolled ? 'black' : 'white', fontSize: '30px', lineHeight: 1 }}>
                                 Parishram
@@ -80,20 +83,20 @@ function Navbar() {
                             sx={{
                                 backgroundColor: scrolled ? 'white' : 'white',
                                 borderRadius: 2,
-                                px: {md:2.5,lg:8},
+                                px: { md: 2.5, lg: 8 },
                                 py: 3,
                                 display: 'flex',
                                 gap: 4,
                                 alignItems: 'center',
                             }}
                         >
-                            {navLinks.map((label) => (
+                            {navLinks.map(({ label, href }) => (
                                 <MuiLink
                                     key={label}
-                                    href="#"
+                                    href={href}
                                     underline="none"
                                     color="black"
-                                    sx={{ fontWeight: 600, fontSize: 18 }}
+                                    sx={{ fontWeight: 600, fontSize: 18, cursor: 'pointer' }}
                                 >
                                     {label}
                                 </MuiLink>
@@ -131,7 +134,7 @@ function Navbar() {
                         boxShadow: 3,
                         display: 'flex',
                         flexDirection: 'column',
-                        justifyContent: 'flex-start'
+                        justifyContent: 'flex-start',
                     },
                 }}
             >
@@ -167,15 +170,25 @@ function Navbar() {
                 </Box>
 
                 <List sx={{ flexGrow: 1, paddingBottom: 0 }}>
-                    {navLinks.map((text) => (
-                        <ListItem button key={text} sx={{ px: 3 }}>
+                    {navLinks.map(({ label, href }) => (
+                        <ListItem
+                            button
+                            key={label}
+                            component="a"
+                            href={href}
+                            sx={{ px: 3 }}
+                        >
                             <ListItemText
-                                primary={text}
-                                primaryTypographyProps={{ fontWeight: 600 }}
+                                primary={label}
+                                primaryTypographyProps={{
+                                    fontWeight: 600,
+                                    color: 'black', // <-- Set text color to black
+                                }}
                             />
                         </ListItem>
                     ))}
                 </List>
+
             </Drawer>
 
             {/* Desktop Side Panel */}
@@ -245,7 +258,6 @@ function Navbar() {
                         <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                             📍 Vadadala Post Office, Plot No. 39, Royal Residency, Vadadla,
                             Vagra, Dahej SIR, Bharuch, Gujarat, 392130
-
                         </Typography>
                         <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', mb: 1.3 }}>
                             📞 99258 41698
