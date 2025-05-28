@@ -84,7 +84,7 @@ function Testimonial() {
     }, []);
 
     return (
-        <Box ref={containerRef} sx={{ maxWidth: "1200px", mx: "auto", px: 2, py: 4 }}>
+        <Box ref={containerRef} sx={{ px: 2, py: 4 }}>
             {/* Section Title */}
             <Container maxWidth={'xl'}>
                 <Typography

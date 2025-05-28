@@ -50,8 +50,8 @@ function Header() {
     }, []);
 
     return (
-        <Box sx={{ bgcolor: '#1a1a1a', color: 'white', p: 4, pt: 20 }}>
-            <Container maxWidth={'xl'}></Container>
+        <Box sx={{ bgcolor: '#1a1a1a', color: 'white', p: 4, pt: {lg:23,xs:20,xl:30} }}>
+            <Container maxWidth={'xl'}>
             {/* Title Section */}
             <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
                 <Typography
@@ -59,6 +59,8 @@ function Header() {
                     sx={{
                         fontWeight: 500,
                         mr: 2,
+                        mt:{md:4},
+                        mb: {xs:2,sm:0},
                         fontSize: { md: "100px", sm: "60px", xs: "40px" },
                         lineHeight: { md: "110px", xs: "40px" }
                     }}
@@ -87,6 +89,7 @@ function Header() {
                     sx={{
                         fontWeight: 500,
                         mr: 2,
+                        mt: {xs:2,sm:0},
                         fontSize: { md: "100px", sm: "60px", xs: "40px" },
                         lineHeight: { md: "110px", xs: "50px", sm: '80px' }
                     }}
@@ -148,6 +151,7 @@ function Header() {
                     ))}
                 </Swiper>
             </Box>
+            </Container>
         </Box>
     );
 }

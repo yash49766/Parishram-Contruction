@@ -26,7 +26,7 @@ const CircleImage = styled('img')({
     width: '100%',
     height: '100%',
     objectFit: 'contain',
-    transform: 'rotate(20deg)',
+    transform: 'rotate(14deg)',
 });
 
 function ExperienceArea() {

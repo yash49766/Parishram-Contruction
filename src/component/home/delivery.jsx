@@ -57,7 +57,7 @@ function Delivery() {
     return (
         <Box
             ref={containerRef}
-            sx={{ flexGrow: 1, my: 4, py: 4, backgroundColor: '#1A1A1A' }}
+            sx={{ flexGrow: 1, my: 4, py: 7, backgroundColor: '#1A1A1A' }}
         >
             <Container maxWidth={'xl'}>
                 <Typography
@@ -93,14 +93,16 @@ function Delivery() {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     boxShadow: 3,
-                                    transition: '0.3s',
+                                    transform: 'translateY(0)', // Set initial transform
+                                    transition: 'transform 0.3s ease, box-shadow 0.3s ease', // Add transform transition
                                     '&:hover': {
-                                        boxShadow: 6,
-                                        transform: 'translateY(-5px)',
+                                        // boxShadow: 6,
+                                        transform: 'translateY(-5px) !important',
                                     },
                                 }}
                             >
-                                <Box sx={{ mb: 2 }}>{service.icon}</Box>
+
+                            <Box sx={{ mb: 2 }}>{service.icon}</Box>
                                 <Typography variant="h6" gutterBottom sx={{ color: '#fff' }}>
                                     {service.title}
                                 </Typography>

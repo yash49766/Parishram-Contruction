@@ -62,7 +62,7 @@ const Footer = () => {
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
                 color: '#fff',
-                py: { xs: 5, md: 7 },
+                py: { xs: 5, md: 9 },
                 px: { xs: 3, sm: 5 },
             }}
         >
@@ -125,7 +125,7 @@ const Footer = () => {
                             to={link.path}
                             style={{
                                 display: 'block',
-                                marginBottom: 8,
+                                marginBottom: 12,
                                 color: '#B2BDC6',
                                 textDecoration: 'none',
                                 transition: 'color 0.3s',
@@ -183,7 +183,7 @@ const Footer = () => {
                                 sx={{
                                     display: 'flex',
                                     alignItems: 'flex-start',
-                                    mb: 2,
+                                    mb: 3,
                                     justifyContent: { xs: 'center', md: 'flex-start' },
                                     '&:hover svg': { color: '#fff' },
                                     '&:hover .hover-text': { color: '#fff' } // underline removed

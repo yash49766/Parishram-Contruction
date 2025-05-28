@@ -19,6 +19,7 @@ import miniImg1 from '../../assets/home/miniImg1.jpg';
 import miniImg2 from '../../assets/home/miniImg2.jpg';
 import miniImg3 from '../../assets/home/miniImg3.avif';
 import miniImg4 from '../../assets/home/miniImg4.avif';
+import {useNavigate} from "react-router-dom";
 
 const images = [miniImg1, miniImg2, miniImg3, miniImg4];
 
@@ -32,6 +33,7 @@ const navLinks = [
 
 function Navbar() {
     const theme = useTheme();
+    const navigate = useNavigate();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
@@ -63,9 +65,9 @@ function Navbar() {
                     transition: 'all 0.3s ease',
                 }}
             >
-                <Toolbar disableGutters sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
+                <Toolbar disableGutters sx={{ justifyContent: 'space-between', alignItems: 'center',margin: {xl: "0 172px", lg: "0 10px"}, }}>
                     {/* Logo */}
-                    <Box display="flex" alignItems="center">
+                    <Box display="flex" alignItems="center" onClick={() => navigate('/')}>
                         <Box component="img" src={Logo} alt="Logo" sx={{ width: 75, height: 75, mr: 2, borderRadius: '50%' }} />
                         <Box>
                             <Box sx={{ fontWeight: 700, color: scrolled ? 'black' : 'white', fontSize: '30px', lineHeight: 1 }}>
@@ -81,7 +83,7 @@ function Navbar() {
                     {!isMobile && (
                         <Box
                             sx={{
-                                backgroundColor: scrolled ? 'white' : 'white',
+                                backgroundColor: 'transparent',
                                 borderRadius: 2,
                                 px: { md: 2.5, lg: 8 },
                                 py: 3,
@@ -95,8 +97,8 @@ function Navbar() {
                                     key={label}
                                     href={href}
                                     underline="none"
-                                    color="black"
-                                    sx={{ fontWeight: 600, fontSize: 18, cursor: 'pointer' }}
+                                    // color="white"
+                                    sx={{ fontWeight: 600, fontSize: 18, cursor: 'pointer',color: scrolled ? "#000" : "#fff", }}
                                 >
                                     {label}
                                 </MuiLink>

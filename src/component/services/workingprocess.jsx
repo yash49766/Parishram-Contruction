@@ -30,22 +30,6 @@ const steps = [
     }
 ];
 
-const ArrowRightSvg = () => (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="42"
-        height="42"
-        viewBox="0 0 32 32"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-    >
-        <path d="m22 6 8 10-8 10m8-10H2" />
-    </svg>
-);
-
 const Workingprocess = () => {
     const containerRef = useRef(null);
 
@@ -122,13 +106,13 @@ const Workingprocess = () => {
                     sx={{
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'center',
+                        justifyContent: 'space-between',
                         flexWrap: 'wrap',
-                        gap: { xs: 3, md: 5 }
+                        // gap: { xs: 3, md: 5 }
                     }}
                 >
                     {steps.map((step, index) => {
-                        const imageSize = index === 1 ? { xs: 220, md: 280 } : { xs: 180, md: 220 };
+                        const imageSize = index === 1 ? { xs: 240, md: 300 } : { xs: 200, md: 240 };
 
                         return (
                             <React.Fragment key={step.id}>
@@ -176,11 +160,7 @@ const Workingprocess = () => {
                                     </Typography>
                                 </Box>
 
-                                {index < steps.length - 1 && (
-                                    <Box className="arrow" sx={{ display: { xs: 'none', md: 'block' }, mx: 2 }}>
-                                        <ArrowRightSvg />
-                                    </Box>
-                                )}
+
                             </React.Fragment>
                         );
                     })}

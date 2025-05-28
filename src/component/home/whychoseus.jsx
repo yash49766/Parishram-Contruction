@@ -197,15 +197,18 @@ function Whychoseus() {
                             sx={{
                                 backgroundColor: '#FF5722',
                                 color: '#fff',
+                                border:"2px solid #FF5722",
                                 borderRadius: '30px',
                                 px: 4,
                                 py: 1.5,
+                                boxShadow:"none",
                                 textTransform: 'none',
                                 fontWeight: 'bold',
                                 transition:"0.3s",
                                 '&:hover': {
                                     backgroundColor: '#fff',
-                                    color:"#000"
+                                    color:"#FF5722",
+                                    // border:"1px solid #fff",
                                 },
                             }}
                         >
