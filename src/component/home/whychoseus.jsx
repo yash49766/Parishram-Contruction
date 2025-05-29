@@ -70,7 +70,9 @@ function Whychoseus() {
     }, []);
 
     return (
-        <>
+        <Box sx={{
+            py:3
+        }}>
             <Container maxWidth={'xl'}>
                 <Typography
                     variant="h4"
@@ -217,7 +219,7 @@ function Whychoseus() {
                     </Box>
                 </Box>
             </Container>
-        </>
+        </Box>
     );
 }
 

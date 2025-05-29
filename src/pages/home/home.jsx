@@ -4,6 +4,8 @@ import Delivery from "../../component/home/delivery.jsx";
 import Whychoseus from "../../component/home/whychoseus.jsx";
 import Exprienceara from "../../component/home/exprienceara.jsx";
 import Testimonial from "../../component/home/testimonial.jsx";
+import Workshowcase from "../../component/home/workshowcase.jsx";
+import Features from "../../component/home/features.jsx";
 
 function Home() {
     return (
@@ -11,7 +13,9 @@ function Home() {
             <Header/>
             <Whychoseus/>
             <Delivery/>
+            <Workshowcase/>
             <Testimonial/>
+            <Features/>
             <Exprienceara/>
         </>
     );

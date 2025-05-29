@@ -1,224 +1,294 @@
-import React, { useRef, useEffect } from "react";
-import {Box, Typography, Avatar, Rating, Container} from "@mui/material";
+import React, { useEffect, useRef } from "react";
+import {
+    Box,
+    Typography,
+    Avatar,
+} from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
+import "swiper/css/autoplay";
 import "swiper/css/pagination";
-import { gsap } from "gsap";
+
+import bgimg from "../../assets/home/test-bg.webp";
+import quoteIcon from "../../assets/home/dots.webp";
+import { useNavigate } from "react-router-dom";
+
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
     {
-        name: "David Anthony",
-        role: "Civil Engineer",
-        image: "https://via.placeholder.com/40",
+        name: "Jesiu Petit",
+        role: "Customer",
+        image: "https://i.pravatar.cc/80?img=1",
         review:
-            "From start to finish, BuildGo delivered exceptional service. They communicated well, met every deadline, and the quality of their work far exceeded our expectations.",
-        rating: 5,
+            "It's very productive to discuss a project with people who have technical background. I forgot how to explain obvious technical things and just get more done.",
     },
     {
-        name: "Michael D",
-        role: "Site Supervisor",
-        image: "https://via.placeholder.com/40",
+        name: "Tom Green",
+        role: "Customer",
+        image: "https://i.pravatar.cc/80?img=2",
         review:
-            "Working with BuildGo was seamless. They handled everything efficiently, professionally, and I would definitely recommend their services.",
-        rating: 5,
+            "Working with this team was fantastic. Everything was smooth and efficient. I’ll definitely return for future projects.",
     },
     {
-        name: "Sarah L",
-        role: "Project Manager",
-        image: "https://via.placeholder.com/40",
+        name: "Sandra Cole",
+        role: "Customer",
+        image: "https://i.pravatar.cc/80?img=3",
         review:
-            "Excellent coordination and follow-through. BuildGo made the entire process stress-free.",
-        rating: 5,
+            "Absolutely amazing experience. The quality and attention to detail are top-notch. Highly recommended!",
     },
 ];
 
-function Testimonial() {
-    const containerRef = useRef(null);
-    const prevRef = useRef(null);
-    const nextRef = useRef(null);
+const Testimonial = () => {
+    const navigate = useNavigate();
+    const testimonialRefs = useRef([]);
 
     useEffect(() => {
-        const cards = containerRef.current.querySelectorAll(".testimonial-card");
+        testimonialRefs.current.forEach((el) => {
+            if (!el) return;
 
-        gsap.fromTo(
-            containerRef.current,
-            { opacity: 0, y: 50 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "top 80%",
-                    toggleActions: "play reverse play reverse",
+            const reviewText = el.querySelector(".review-text");
+
+            const words = reviewText.textContent.split(" ");
+            reviewText.innerHTML = words.map(word => `<span class="word">${word}&nbsp;</span>`).join("");
+
+            const wordElements = reviewText.querySelectorAll(".word");
+
+            gsap.fromTo(
+                wordElements,
+                {
+                    opacity: 0,
+                    y: 20,
                 },
-            }
-        );
-
-        gsap.fromTo(
-            cards,
-            { opacity: 0, y: 30 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                stagger: 0.3,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "top 80%",
-                    toggleActions: "play reverse play reverse",
-                },
-            }
-        );
-
-        return () => {
-            ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-        };
+                {
+                    opacity: 1,
+                    y: 0,
+                    stagger: 0.05,
+                    duration: 0.6,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 80%",
+                        toggleActions: "play none none none",
+                    },
+                }
+            );
+        });
     }, []);
 
     return (
-        <Box ref={containerRef} sx={{ px: 2, py: 4 }}>
-            {/* Section Title */}
-            <Container maxWidth={'xl'}>
-                <Typography
-                    variant="h4"
-                    component="h2"
-                    sx={{
-                        display: { xs: "none", md: "block" },
-                        textAlign: "center",
-                        fontSize: { xs: "24px", sm: "32px", md: "40px" },
-                        fontWeight: 600,
-                        mb: 4,
-                        color: "#000",
-                        lineHeight: 1.3,
-                    }}
-                >
-                    Testimonial
-                </Typography>
-                <Typography
-                    variant="caption"
-                    sx={{
-                        fontWeight: "bold",
-                        backgroundColor: "#F5F5F5",
-                        px: 1.5,
-                        py: 0.5,
-                        borderRadius: 2,
-                        mb: 2,
-                        mt: { lg: 2, xs: 0 },
-                        display: { xs: "inline-block", md: "none" },
-                    }}
-                >
-                    Testimonial
-                </Typography>
-
-                {/* Title and Navigation */}
+        <Box
+            sx={{
+                backgroundImage: `url(${bgimg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                py: { xs: 6, md: 10 },
+                px: { xs: 2, sm: 4, md: 10 },
+                overflow: "hidden",
+            }}
+        >
+            <Box
+                sx={{
+                    maxWidth: "1400px",
+                    mx: "auto",
+                    display: "flex",
+                    flexDirection: { xs: "column", md: "row" },
+                    alignItems: "flex-start",
+                    gap: 6,
+                }}
+            >
+                {/* LEFT SIDE */}
                 <Box
-                    display="flex"
-                    justifyContent="space-between"
-                    alignItems="center"
-                    flexWrap="wrap"
-                    mb={3}
-                    px={{ xs: 1, sm: 2 }}
+                    sx={{
+                        flex: { xs: "1 1 100%", md: "0 0 40%" },
+                        maxWidth: { xs: "100%", md: "40%" },
+                        width: "100%",
+                        color: "#fff",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                    }}
                 >
+                    <Box
+                        component="img"
+                        src={quoteIcon}
+                        alt="Quote Icon"
+                        sx={{ width: 80, height: 80, mb: 3 }}
+                    />
                     <Typography
-                        variant="h4"
-                        fontWeight={500}
+                        variant="overline"
                         sx={{
-                            fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
-                            flex: { xs: "100%", md: "auto" },
-                            mb: { xs: 2, md: 0 },
-                            textAlign: { xs: "center", md: "left" },
-                            whiteSpace: { xs: "normal", md: "nowrap" },
+                            letterSpacing: 1.5,
+                            color: "#9ca3af",
+                            fontWeight: 600,
+                            mb: 1,
                         }}
                     >
-                        Client Feedback and <br /> Success Stories
+                        WHAT PEOPLE SAY
                     </Typography>
-                    {/* Navigation buttons can be added back if needed */}
+                    <Typography
+                        variant="h3"
+                        sx={{
+                            fontSize: { xs: "32px", md: "44px" },
+                            fontWeight: 700,
+                            mb: 3,
+                        }}
+                    >
+                        Client's Talk
+                    </Typography>
+                    <Typography
+                        sx={{
+                            fontSize: { xs: "16px", md: "18px" },
+                            color: "#cbd5e1",
+                            maxWidth: "500px",
+                        }}
+                    >
+                        We have a wealth of experience working as main building contractors on all kinds of
+                        projects, big and small, from home maintenance and improvements to extensions,
+                        refurbishments and new builds.
+                    </Typography>
+
+                    <Box
+                        onClick={() => navigate('/about')}
+                        sx={{
+                            mt: 5,
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: 1,
+                            px: 4,
+                            py: 1.5,
+                            border: "3px solid #E1E4E65C",
+                            borderRadius: "50px",
+                            color: "#fff",
+                            fontWeight: 600,
+                            fontSize: "13px",
+                            cursor: "pointer",
+                            transition: "all 0.3s",
+                            width: "fit-content",
+                            "&:hover": {
+                                backgroundColor: "#FF6422",
+                                color: "#fff",
+                                "& span": {
+                                    color: "#fff",
+                                },
+                            },
+                        }}
+                    >
+                        VIEW MORE
+                        <Box component="span" sx={{ fontSize: 18, color: "#FF6422" }}>↗</Box>
+                    </Box>
                 </Box>
 
-                {/* Swiper Slider with Autoplay */}
-                <Swiper
-                    spaceBetween={20}
-                    slidesPerView={1}
-                    autoplay={{
-                        delay: 3000,
-                        disableOnInteraction: false,
-                    }}
-                    navigation={{
-                        prevEl: prevRef.current,
-                        nextEl: nextRef.current,
-                    }}
-                    onInit={(swiper) => {
-                        swiper.params.navigation.prevEl = prevRef.current;
-                        swiper.params.navigation.nextEl = nextRef.current;
-                        swiper.navigation.init();
-                        swiper.navigation.update();
-                    }}
-                    modules={[Navigation, Autoplay]}
-                    breakpoints={{
-                        640: { slidesPerView: 1 },
-                        768: { slidesPerView: 2 },
-                        1024: { slidesPerView: 2 },
+                {/* RIGHT SIDE - Swiper */}
+                <Box
+                    sx={{
+                        flex: { xs: "1 1 100%", md: "0 0 60%" },
+                        maxWidth: { xs: "100%", md: "60%" },
+                        width: "100%",
+                        pl: { md: 4 },
+                        pt: { xs: 4, md: 0 },
+                        overflow: "visible",
                     }}
                 >
-                    {testimonials.map((testimonial, index) => (
-                        <SwiperSlide key={index}>
-                            <Box
-                                className="testimonial-card"
-                                sx={{
-                                    border: "1px solid #eee",
-                                    borderRadius: "16px",
-                                    p: 3,
-                                    height: "100%",
-                                    boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    justifyContent: "space-between",
-                                    backgroundColor: "#fff",
-                                }}
-                            >
-                                <Box display="flex" alignItems="center" mb={2}>
-                                    <Avatar
-                                        src={testimonial.image}
-                                        alt={testimonial.name}
-                                        sx={{ mr: 2, width: 56, height: 56 }}
-                                    />
-                                    <Box>
-                                        <Typography fontWeight={600} fontSize={{ xs: "1rem", sm: "1.1rem" }}>
-                                            {testimonial.name}
-                                        </Typography>
-                                        <Typography
-                                            variant="caption"
-                                            color="text.secondary"
-                                            fontSize={{ xs: "0.8rem", sm: "0.9rem" }}
-                                        >
-                                            {testimonial.role}
-                                        </Typography>
+                    <Swiper
+                        loop
+                        modules={[Autoplay, Pagination]}
+                        autoplay={{ delay: 5000 }}
+                        spaceBetween={10}
+                        pagination={{ clickable: true }}
+                        breakpoints={{
+                            0: { slidesPerView: 1 },
+                            768: { slidesPerView: 1 },
+                            900: { slidesPerView: 1.25 },
+                            1200: { slidesPerView: 1 },
+                        }}
+                        style={{
+                            paddingBottom: "40px",
+                        }}
+                    >
+                        {testimonials.map((testimonial, index) => (
+                            <SwiperSlide key={index}>
+                                <Box
+                                    sx={{
+                                        backgroundColor: "#fff",
+                                        p: 5,
+                                        position: "relative",
+                                        height: 300,
+                                        boxShadow: "0 5px 15px rgba(0,0,0,0.1)",
+                                        width: "100%",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        // justifyContent: "space-between",
+                                    }}
+                                    ref={(el) => (testimonialRefs.current[index] = el)}
+                                >
+                                    <Typography
+                                        className="review-text"
+                                        sx={{
+                                            position: "relative",
+                                            fontSize: "1rem",
+                                            fontStyle: "italic",
+                                            color: "#374151",
+                                            zIndex: 1,
+                                            mb: 3,
+                                            wordBreak: "break-word",
+                                        }}
+                                    >
+                                        {testimonial.review}
+                                    </Typography>
+
+                                    <Box
+                                        display="flex"
+                                        alignItems="center"
+                                        gap={2}
+                                        mt={2}
+                                        zIndex={1}
+                                    >
+                                        <Avatar
+                                            src={testimonial.image}
+                                            alt={testimonial.name}
+                                            sx={{ width: 48, height: 48 }}
+                                        />
+                                        <Box>
+                                            <Typography sx={{ fontWeight: 600, color: "#111827" }}>
+                                                {testimonial.name}
+                                            </Typography>
+                                            <Typography
+                                                sx={{ fontSize: "0.85rem", color: "#6b7280" }}
+                                            >
+                                                {testimonial.role}
+                                            </Typography>
+                                        </Box>
+                                    </Box>
+
+                                    <Box
+                                        sx={{
+                                            position: "absolute",
+                                            top: 0,
+                                            right: -30,
+                                            fontSize: "200px",
+                                            color: "#e5e7eb",
+                                            fontWeight: 700,
+                                            lineHeight: 1,
+                                            zIndex: 0,
+                                            pointerEvents: "none",
+                                            opacity: 0.1,
+                                        }}
+                                    >
+                                        &rdquo;
                                     </Box>
                                 </Box>
-                                <Typography
-                                    variant="body1"
-                                    color="text.primary"
-                                    mb={2}
-                                    sx={{ fontSize: { xs: "0.9rem", sm: "1rem" }, flexGrow: 1 }}
-                                >
-                                    {testimonial.review}
-                                </Typography>
-                                <Rating value={testimonial.rating} readOnly size="small" />
-                            </Box>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </Container>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </Box>
+            </Box>
         </Box>
     );
-}
+};
 
 export default Testimonial;

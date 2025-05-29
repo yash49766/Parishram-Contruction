@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import {Box, Typography, IconButton, Container} from '@mui/material';
+import { Box, Typography, IconButton, Container } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import {Autoplay, Navigation, Pagination} from 'swiper/modules';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -50,107 +50,137 @@ function Header() {
     }, []);
 
     return (
-        <Box sx={{ bgcolor: '#1a1a1a', color: 'white', p: 4, pt: {lg:23,xs:20,xl:30} }}>
+        <Box sx={{ bgcolor: '#1a1a1a', color: 'white', p: 4, pt: { lg: 23, xs: 20, xl: 30 }, pb: { md: 10, xs: 5 } }}>
             <Container maxWidth={'xl'}>
-            {/* Title Section */}
-            <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
-                <Typography
-                    ref={title1Ref}
-                    sx={{
-                        fontWeight: 500,
-                        mr: 2,
-                        mt:{md:4},
-                        mb: {xs:2,sm:0},
-                        fontSize: { md: "100px", sm: "60px", xs: "40px" },
-                        lineHeight: { md: "110px", xs: "40px" }
-                    }}
-                >
-                    Modern
-                </Typography>
-                <Box
-                    component="img"
-                    src={smallImage}
-                    alt="small"
-                    ref={imgRef}
-                    sx={{
-                        width: { xs: 120, sm: 180, md: 240, lg: 300 },
-                        height: 'auto',
-                        borderRadius: 15,
-                        objectFit: 'cover',
-                        mx: 1,
-                        maxWidth: '100%',
-                    }}
-                />
-            </Box>
-
-            <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
-                <Typography
-                    ref={title2Ref}
-                    sx={{
-                        fontWeight: 500,
-                        mr: 2,
-                        mt: {xs:2,sm:0},
-                        fontSize: { md: "100px", sm: "60px", xs: "40px" },
-                        lineHeight: { md: "110px", xs: "50px", sm: '80px' }
-                    }}
-                >
-                    Building <br /> Concepts
-                </Typography>
-                <Box
-                    ref={yearRef}
-                    sx={{
-                        ml: 'auto',
-                        fontSize: { md: '150px', sm: '80px', xs: '40px' },
-                        color: 'rgba(255, 255, 255, 0.2)',
-                        fontWeight: 500,
-                    }}
-                >
-                    2025
-                </Box>
-            </Box>
-
-            {/* Swiper with animation */}
-            <Box sx={{ position: 'relative', mt: 4 }} ref={swiperRef}>
-                <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2, gap: 2 }}>
-                    <IconButton className="swiper-button-prev-custom" sx={navButtonStyle}>
-                        <ChevronLeft size={24} />
-                    </IconButton>
-                    <IconButton className="swiper-button-next-custom" sx={navButtonStyle}>
-                        <ChevronRight size={24} />
-                    </IconButton>
+                {/* Title Section */}
+                <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+                    <Typography
+                        ref={title1Ref}
+                        sx={{
+                            fontWeight: 500,
+                            mr: 2,
+                            mt: { md: 4 },
+                            mb: { xs: 2, sm: 0 },
+                            fontSize: { md: "100px", sm: "60px", xs: "40px" },
+                            lineHeight: { md: "110px", xs: "40px" }
+                        }}
+                    >
+                        Modern
+                    </Typography>
+                    <Box
+                        component="img"
+                        src={smallImage}
+                        alt="small"
+                        ref={imgRef}
+                        sx={{
+                            width: { xs: 120, sm: 180, md: 240, lg: 300 },
+                            height: 'auto',
+                            borderRadius: 15,
+                            objectFit: 'cover',
+                            mx: 1,
+                            maxWidth: '100%',
+                        }}
+                    />
                 </Box>
 
-                <Swiper
-                    slidesPerView={1.25}
-                    spaceBetween={20}
-                    loop
-                    navigation={{
-                        prevEl: '.swiper-button-prev-custom',
-                        nextEl: '.swiper-button-next-custom',
-                    }}
-                    modules={[Navigation, Pagination]}
-                    style={{
-                        borderRadius: '12px',
-                        overflow: 'hidden',
-                    }}
-                >
-                    {[Img1, Img2, Img3].map((img, index) => (
-                        <SwiperSlide key={index}>
-                            <Box
-                                component="img"
-                                src={img}
-                                alt={`slide-${index}`}
-                                sx={{
-                                    width: '100%',
-                                    height: { xs: 250, sm: 350, md: 450 },
-                                    objectFit: 'cover',
-                                    borderRadius: '12px',
-                                }}
-                            />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+                    <Typography
+                        ref={title2Ref}
+                        sx={{
+                            fontWeight: 500,
+                            mr: 2,
+                            mt: { xs: 2, sm: 0 },
+                            fontSize: { md: "100px", sm: "60px", xs: "40px" },
+                            lineHeight: { md: "110px", xs: "50px", sm: '80px' }
+                        }}
+                    >
+                        Building <br /> Concepts
+                    </Typography>
+                    <Box
+                        ref={yearRef}
+                        sx={{
+                            ml: 'auto',
+                            fontSize: { md: '150px', sm: '80px', xs: '40px' },
+                            color: 'rgba(255, 255, 255, 0.2)',
+                            fontWeight: 500,
+                        }}
+                    >
+                        2025
+                    </Box>
+                </Box>
+
+                {/* Swiper with navigation on sides */}
+                <Box sx={{ position: 'relative', mt: 4 }} ref={swiperRef}>
+                    <Box
+                        sx={{
+                            position: 'relative',
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}
+                    >
+                        {/* Left Nav Button */}
+                        <IconButton
+                            className="swiper-button-prev-custom"
+                            sx={{
+                                ...navButtonStyle,
+                                position: 'absolute',
+                                left: -35,
+                                top: '50%',
+                                transform: 'translateY(-50%)',
+                                display: { xs: 'none', sm: 'flex' },
+                            }}
+                        >
+                            <ChevronLeft size={44} />
+                        </IconButton>
+
+                        <Swiper
+                            slidesPerView={1.25}
+                            spaceBetween={20}
+                            loop
+                            navigation={{
+                                prevEl: '.swiper-button-prev-custom',
+                                nextEl: '.swiper-button-next-custom',
+                            }}
+                            modules={[Navigation, Pagination,Autoplay]}
+                            style={{
+                                borderRadius: '12px',
+                                overflow: 'hidden',
+                                width: '100%',
+                            }}
+                        >
+                            {[Img1, Img2, Img3].map((img, index) => (
+                                <SwiperSlide key={index}>
+                                    <Box
+                                        component="img"
+                                        src={img}
+                                        alt={`slide-${index}`}
+                                        sx={{
+                                            width: '100%',
+                                            height: { xs: 250, sm: 350, md: 450 },
+                                            objectFit: 'cover',
+                                            borderRadius: '12px',
+                                        }}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+
+                        {/* Right Nav Button */}
+                        <IconButton
+                            className="swiper-button-next-custom"
+                            sx={{
+                                ...navButtonStyle,
+                                position: 'absolute',
+                                right: -37,
+                                top: '50%',
+                                transform: 'translateY(-50%)',
+                                display: { xs: 'none', sm: 'flex' },
+                            }}
+                        >
+                            <ChevronRight size={44} />
+                        </IconButton>
+                    </Box>
+                </Box>
             </Container>
         </Box>
     );
@@ -162,8 +192,9 @@ const navButtonStyle = {
     '&:hover': {
         bgcolor: 'rgba(255, 255, 255, 0.3)',
     },
-    width: 48,
-    height: 48,
+    width: 58,
+    height: 58,
+    borderRadius: '0px',
     transition: 'all 0.2s ease',
     zIndex: 10,
 };

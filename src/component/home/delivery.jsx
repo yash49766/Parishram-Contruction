@@ -57,7 +57,7 @@ function Delivery() {
     return (
         <Box
             ref={containerRef}
-            sx={{ flexGrow: 1, my: 4, py: 7, backgroundColor: '#1A1A1A' }}
+            sx={{ flexGrow: 1, mt:4, py: 8,pb:10, backgroundColor: '#1A1A1A' }}
         >
             <Container maxWidth={'xl'}>
                 <Typography
