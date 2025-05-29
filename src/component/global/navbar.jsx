@@ -67,7 +67,7 @@ function Navbar() {
             >
                 <Toolbar disableGutters sx={{ justifyContent: 'space-between', alignItems: 'center',margin: {xl: "0 172px", lg: "0 10px"}, }}>
                     {/* Logo */}
-                    <Box display="flex" alignItems="center" onClick={() => navigate('/')}>
+                    <Box display="flex" alignItems="center" onClick={() => navigate('/')} sx={{cursor: 'pointer'}}>
                         <Box component="img" src={Logo} alt="Logo" sx={{ width: 75, height: 75, mr: 2, borderRadius: '50%' }} />
                         <Box>
                             <Box sx={{ fontWeight: 700, color: scrolled ? 'black' : 'white', fontSize: '30px', lineHeight: 1 }}>
