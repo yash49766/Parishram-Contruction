@@ -43,7 +43,7 @@ const CompletedProject = () => {
             <Box
                 display="flex"
                 sx={{
-                    height: '100vh',
+                    // height: '100vh',
                     overflow: 'hidden',
                     flexDirection: { xs: 'column', md: 'row' },
                 }}
@@ -118,6 +118,7 @@ const CompletedProject = () => {
                                 width: '24px',
                                 height: '24px',
                                 display: 'flex',
+                                border: '1px solid #fff',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 position: 'absolute',
@@ -143,7 +144,7 @@ const CompletedProject = () => {
                     <Box
                         ref={containerRef}
                         sx={{
-                            height: '100%',
+                            height: '80%',
                             overflowY: 'scroll',
                             scrollBehavior: 'smooth',
                             '&::-webkit-scrollbar': { display: 'none' },

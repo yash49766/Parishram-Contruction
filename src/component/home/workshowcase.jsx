@@ -16,24 +16,26 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const imageData = [
+    { src: Img1, title: 'Residential Project', location: 'Ahmedabad' },
+    { src: Img2, title: 'Highway Roadwork', location: 'Surat' },
+    { src: Img3, title: 'Mall Construction', location: 'Vadodara' },
+    { src: Img4, title: 'Flyover Bridge', location: 'Rajkot' },
+    { src: Img5, title: 'Corporate Park', location: 'Gandhinagar' }
+];
+
 const Workshowcase = () => {
     const navigate = useNavigate();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const imageRefs = useRef([]);
 
-    const images = [Img1, Img2, Img3, Img4, Img5];
-
     useEffect(() => {
-        imageRefs.current.forEach((el, i) => {
+        imageRefs.current.forEach((el) => {
             if (!el) return;
-
             gsap.fromTo(
                 el,
-                {
-                    opacity: 0,
-                    y: 50,
-                },
+                { opacity: 0, y: 50 },
                 {
                     opacity: 1,
                     y: 0,
@@ -51,12 +53,10 @@ const Workshowcase = () => {
 
     return (
         <Box sx={{ backgroundColor: '#fff', py: 6, px: 4 }}>
-            <Container maxWidth={'xl'}>
+            <Container maxWidth="xl">
                 <Typography
                     variant="h4"
-                    component="h2"
                     sx={{
-                        display: { xs: 'none', md: 'block' },
                         textAlign: 'center',
                         fontSize: { xs: '24px', sm: '32px', md: '45px' },
                         fontWeight: 600,
@@ -68,6 +68,7 @@ const Workshowcase = () => {
                 >
                     Our Portfolio
                 </Typography>
+
                 <Box
                     sx={{
                         display: 'flex',
@@ -78,10 +79,9 @@ const Workshowcase = () => {
                     <Typography
                         variant="h4"
                         sx={{
-                            fontWeight: '500',
+                            fontWeight: 500,
                             mb: 4,
                             fontSize: { xs: '28px', md: '38px' },
-                            alignItems: 'center',
                         }}
                     >
                         Works Showcase
@@ -92,20 +92,21 @@ const Workshowcase = () => {
                         sx={{
                             backgroundColor: '#FF5722',
                             color: '#fff',
-                            border: "2px solid #FF5722",
+                            border: '2px solid #FF5722',
                             borderRadius: '30px',
                             px: 4,
+                            mb: 4,
                             py: 1.5,
-                            boxShadow: "none",
+                            boxShadow: 'none',
                             textTransform: 'none',
                             fontWeight: 'bold',
-                            transition: "0.3s",
-                            display: "flex",
-                            alignItems: "center",
+                            display: 'flex',
+                            alignItems: 'center',
                             gap: 1,
+                            transition: '0.3s',
                             '&:hover': {
                                 backgroundColor: '#fff',
-                                color: "#FF5722",
+                                color: '#FF5722',
                             },
                         }}
                     >
@@ -121,22 +122,14 @@ const Workshowcase = () => {
                     spaceBetween={16}
                     slidesPerView={isMobile ? 1 : 4}
                     breakpoints={{
-                        600: {
-                            slidesPerView: 1,
-                        },
-                        900: {
-                            slidesPerView: 2,
-                        },
-                        1200: {
-                            slidesPerView: 3,
-                        },
-                        1536: {
-                            slidesPerView: 4,
-                        },
+                        600: { slidesPerView: 1 },
+                        900: { slidesPerView: 2 },
+                        1200: { slidesPerView: 3 },
+                        1536: { slidesPerView: 4 },
                     }}
                     style={{ paddingBottom: '40px' }}
                 >
-                    {images.map((img, index) => (
+                    {imageData.map((img, index) => (
                         <SwiperSlide key={index}>
                             <Box
                                 ref={(el) => (imageRefs.current[index] = el)}
@@ -146,35 +139,67 @@ const Workshowcase = () => {
                                     borderRadius: '12px',
                                     height: '300px',
                                     cursor: 'pointer',
-                                    '&:hover img': {
-                                        transform: 'scale(1.1)',
-                                        filter: 'brightness(1.1)',
+                                    '&:hover .hover-img': {
+                                        filter: 'brightness(0.6)',
+                                        transform: 'scale(1.05)',
                                     },
-                                    '&:hover::after': {
-                                        content: '""',
-                                        position: 'absolute',
-                                        top: 0,
-                                        left: 0,
-                                        width: '100%',
-                                        height: '100%',
-                                        background: 'rgba(0, 0, 0, 0.2)',
-                                        borderRadius: '12px',
+                                    '&:hover .overlay': {
+                                        opacity: 1,
                                     },
                                 }}
                             >
+                                {/* Image */}
                                 <Box
                                     component="img"
-                                    src={img}
+                                    src={img.src}
                                     alt={`Work ${index}`}
+                                    className="hover-img"
                                     sx={{
                                         width: '100%',
                                         height: '100%',
                                         objectFit: 'cover',
-                                        transition: 'transform 0.5s ease, filter 0.3s ease',
+                                        transition: 'transform 0.4s ease, filter 0.3s ease',
                                     }}
                                 />
+
+                                {/* Overlay */}
+                                <Box
+                                    className="overlay"
+                                    sx={{
+                                        position: 'absolute',
+                                        bottom: 0,
+                                        left: 0,
+                                        width: '100%',
+                                        bgcolor: 'rgba(0, 0, 0, 0.5)',
+                                        opacity: 0,
+                                        transition: 'opacity 0.3s ease',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        color: '#fff',
+                                        borderBottomLeftRadius: '12px',
+                                        borderBottomRightRadius: '12px',
+                                        py: 2,
+                                    }}
+                                >
+                                    <Typography
+                                        variant="h6"
+                                        fontWeight="bold"
+                                        sx={{ fontSize: { xs: '18px', sm: '20px', md: '22px' } }}
+                                    >
+                                        {img.title}
+                                    </Typography>
+                                    <Typography
+                                        variant="body2"
+                                        sx={{ fontSize: { xs: '14px', sm: '16px', md: '18px' } }}
+                                    >
+                                        {img.location}
+                                    </Typography>
+                                </Box>
                             </Box>
                         </SwiperSlide>
+
                     ))}
                 </Swiper>
             </Container>
