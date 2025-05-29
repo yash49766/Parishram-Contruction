@@ -124,13 +124,13 @@ function Header() {
                             sx={{
                                 ...navButtonStyle,
                                 position: 'absolute',
-                                left: -35,
+                                left: -57,
                                 top: '50%',
                                 transform: 'translateY(-50%)',
                                 display: { xs: 'none', sm: 'flex' },
                             }}
                         >
-                            <ChevronLeft size={44} />
+                            <ChevronLeft size={60} />
                         </IconButton>
 
                         <Swiper
@@ -171,13 +171,13 @@ function Header() {
                             sx={{
                                 ...navButtonStyle,
                                 position: 'absolute',
-                                right: -37,
+                                right: -55,
                                 top: '50%',
                                 transform: 'translateY(-50%)',
                                 display: { xs: 'none', sm: 'flex' },
                             }}
                         >
-                            <ChevronRight size={44} />
+                            <ChevronRight size={60} />
                         </IconButton>
                     </Box>
                 </Box>
@@ -187,15 +187,15 @@ function Header() {
 }
 
 const navButtonStyle = {
-    bgcolor: 'rgba(255, 255, 255, 0.1)',
+    bgcolor: 'rgba(0,0,0,0.4)',
     color: 'white',
     '&:hover': {
-        bgcolor: 'rgba(255, 255, 255, 0.3)',
+        bgcolor: 'rgba(0,0,0,0.7)',
     },
-    width: 58,
-    height: 58,
+    width: 78,
+    height: 78,
     borderRadius: '0px',
-    transition: 'all 0.2s ease',
+    transition: 'all 0.3s ease',
     zIndex: 10,
 };
 
