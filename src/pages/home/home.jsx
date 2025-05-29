@@ -6,16 +6,21 @@ import Exprienceara from "../../component/home/exprienceara.jsx";
 import Testimonial from "../../component/home/testimonial.jsx";
 import Workshowcase from "../../component/home/workshowcase.jsx";
 import Features from "../../component/home/features.jsx";
+import Services from "../../component/home/services.jsx";
+import Completedproject from "../../component/home/completedproject.jsx";
 
 function Home() {
     return (
         <>
             <Header/>
-            <Whychoseus/>
-            <Delivery/>
-            <Workshowcase/>
-            <Testimonial/>
             <Features/>
+            <Services />
+            <Completedproject/>
+            <Delivery/>
+            <Whychoseus/>
+            <Testimonial/>
+            <Workshowcase/>
+
             <Exprienceara/>
         </>
     );

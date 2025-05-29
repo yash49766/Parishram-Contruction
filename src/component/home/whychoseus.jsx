@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import {Box, Typography, Button, LinearProgress, Container} from '@mui/material';
 import img1 from '../../assets/home/miniImg2.jpg';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
     import { useNavigate } from 'react-router-dom';
@@ -199,23 +200,27 @@ function Whychoseus() {
                             sx={{
                                 backgroundColor: '#FF5722',
                                 color: '#fff',
-                                border:"2px solid #FF5722",
+                                border: "2px solid #FF5722",
                                 borderRadius: '30px',
                                 px: 4,
                                 py: 1.5,
-                                boxShadow:"none",
+                                boxShadow: "none",
                                 textTransform: 'none',
                                 fontWeight: 'bold',
-                                transition:"0.3s",
+                                transition: "0.3s",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 1,
                                 '&:hover': {
                                     backgroundColor: '#fff',
-                                    color:"#FF5722",
-                                    // border:"1px solid #fff",
+                                    color: "#FF5722",
                                 },
                             }}
                         >
                             START TODAY
+                            <ArrowForwardIcon sx={{ fontSize: 20 }} />
                         </Button>
+
                     </Box>
                 </Box>
             </Container>

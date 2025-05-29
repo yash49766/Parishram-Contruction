@@ -86,7 +86,7 @@ const Testimonial = () => {
                 backgroundImage: `url(${bgimg})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                py: { xs: 6, md: 10 },
+                py: { xs: 6, md: 15,sm: 10 },
                 px: { xs: 2, sm: 4, md: 10 },
                 overflow: "hidden",
             }}
@@ -269,7 +269,7 @@ const Testimonial = () => {
                                         sx={{
                                             position: "absolute",
                                             top: 0,
-                                            right: -30,
+                                            right: -50,
                                             fontSize: "200px",
                                             color: "#e5e7eb",
                                             fontWeight: 700,

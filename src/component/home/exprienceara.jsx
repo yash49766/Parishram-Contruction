@@ -91,18 +91,17 @@ function ExperienceArea() {
                     container
                     spacing={6}
                     alignItems="center"
+                    // justifyContent="center"
                     direction={{ xs: 'column', md: 'column', lg: 'row' }}
                 >
                     {/* IMAGE SECTION */}
                     <Grid
                         item
-                        xs={12}
-                        md={12}
-                        lg={6}
+                        size={{xs:12,md:12,lg:6}}
                         order={{ xs: 1, md: 1, lg: 2 }}
                         sx={{
                             display: 'flex',
-                            justifyContent: { xs: 'center', md: 'center', lg: 'flex-start' },
+                            justifyContent: { xs: 'center', md: 'center' },
                             alignItems: 'center',
                         }}
                         ref={imageRef}
@@ -113,6 +112,8 @@ function ExperienceArea() {
                                 height: { xs: '400px', sm: '500px', md: '700px', lg: 500 },
                                 overflow: 'hidden',
                                 borderRadius: { xs: 0, md: 2 },
+                                display: 'flex',
+                                justifyContent: 'flex-end',
                             }}
                         >
                             <Box
@@ -131,9 +132,7 @@ function ExperienceArea() {
                     {/* CONTENT SECTION */}
                     <Grid
                         item
-                        xs={12}
-                        md={12}
-                        lg={6}
+                        size={{xs:12,md:12,lg:6}}
                         order={{ xs: 2, md: 2, lg: 1 }}
                         sx={{
                             display: 'flex',
@@ -201,8 +200,7 @@ function ExperienceArea() {
                                 {/* Card 1 */}
                                 <Grid
                                     item
-                                    xs={10}       // smaller width on xs to allow centering
-                                    sm={6}
+                                    size={{xs:10,sm:6}}
                                     ref={addToRefs}
                                     sx={{ maxWidth: { xs: 360, sm: 'none' } }}  // limit maxWidth on mobile to control size
                                 >
@@ -235,8 +233,7 @@ function ExperienceArea() {
                                 {/* Card 2 */}
                                 <Grid
                                     item
-                                    xs={10}       // smaller width on xs for centering
-                                    sm={6}
+                                    size={{xs:10,sm:6}}
                                     ref={addToRefs}
                                     sx={{ maxWidth: { xs: 360, sm: 'none' } }}
                                 >

@@ -214,7 +214,7 @@ const Footer = () => {
             </Grid>
             <Divider sx={{ my: 4, borderColor: '#a39d9d' }} />
 
-            <Typography sx={{ textAlign: 'center', fontSize: '0.85rem', color: '#aaa' }}>
+            <Typography sx={{ textAlign: 'center', fontSize: '0.85rem', color: '#aaa',pt:5 }}>
                 © 2022, All rights reserved |{' '}
                 <Box component="span" sx={{ fontWeight: 'bold', color: '#fff' }}>
                     Codeless

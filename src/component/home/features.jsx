@@ -30,7 +30,7 @@ const FeatureBox = styled(Box)(({ theme }) => ({
     justifyContent: 'center',
     '&:hover': {
         boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
-        transform: 'translateY(-4px)',
+        // Removed transform on hover
     },
 }));
 
@@ -102,7 +102,9 @@ function Features() {
                         <Grid
                             key={index}
                             item
-                            size={{xs:12,sm:6,md:3}}
+                            xs={12}
+                            sm={6}
+                            md={3}
                             sx={{ display: 'flex', justifyContent: 'center' }}
                         >
                             <FeatureBox ref={(el) => (featureRefs.current[index] = el)}>

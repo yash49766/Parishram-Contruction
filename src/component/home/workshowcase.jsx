@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Box, Typography, useTheme, useMediaQuery, Button, Container } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import 'swiper/css/navigation';
 import Img1 from '../../assets/home/img1.webp';
 import Img2 from '../../assets/home/img2.jpg';
@@ -51,6 +52,22 @@ const Workshowcase = () => {
     return (
         <Box sx={{ backgroundColor: '#fff', py: 6, px: 4 }}>
             <Container maxWidth={'xl'}>
+                <Typography
+                    variant="h4"
+                    component="h2"
+                    sx={{
+                        display: { xs: 'none', md: 'block' },
+                        textAlign: 'center',
+                        fontSize: { xs: '24px', sm: '32px', md: '45px' },
+                        fontWeight: 600,
+                        mb: 4,
+                        mt: 4,
+                        color: '#000',
+                        lineHeight: 1.3,
+                    }}
+                >
+                    Our Portfolio
+                </Typography>
                 <Box
                     sx={{
                         display: 'flex',
@@ -61,9 +78,9 @@ const Workshowcase = () => {
                     <Typography
                         variant="h4"
                         sx={{
-                            fontWeight: 'bold',
+                            fontWeight: '500',
                             mb: 4,
-                            fontSize: { xs: '28px', md: '45px' },
+                            fontSize: { xs: '28px', md: '38px' },
                             alignItems: 'center',
                         }}
                     >
@@ -75,23 +92,25 @@ const Workshowcase = () => {
                         sx={{
                             backgroundColor: '#FF5722',
                             color: '#fff',
-                            border: '2px solid #FF5722',
+                            border: "2px solid #FF5722",
                             borderRadius: '30px',
                             px: 4,
-                            mb: 4,
-                            alignItems: 'center',
-                            py: 1.2,
-                            boxShadow: 'none',
+                            py: 1.5,
+                            boxShadow: "none",
                             textTransform: 'none',
                             fontWeight: 'bold',
-                            transition: '0.3s',
+                            transition: "0.3s",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 1,
                             '&:hover': {
                                 backgroundColor: '#fff',
-                                color: '#FF5722',
+                                color: "#FF5722",
                             },
                         }}
                     >
                         View gallery
+                        <ArrowForwardIcon sx={{ fontSize: 20 }} />
                     </Button>
                 </Box>
 
@@ -120,17 +139,41 @@ const Workshowcase = () => {
                     {images.map((img, index) => (
                         <SwiperSlide key={index}>
                             <Box
-                                component="img"
                                 ref={(el) => (imageRefs.current[index] = el)}
-                                src={img}
-                                alt={`Work ${index}`}
                                 sx={{
-                                    width: '100%',
+                                    position: 'relative',
+                                    overflow: 'hidden',
+                                    borderRadius: '12px',
                                     height: '300px',
-                                    objectFit: 'cover',
-                                    borderRadius: '8px',
+                                    cursor: 'pointer',
+                                    '&:hover img': {
+                                        transform: 'scale(1.1)',
+                                        filter: 'brightness(1.1)',
+                                    },
+                                    '&:hover::after': {
+                                        content: '""',
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: 0,
+                                        width: '100%',
+                                        height: '100%',
+                                        background: 'rgba(0, 0, 0, 0.2)',
+                                        borderRadius: '12px',
+                                    },
                                 }}
-                            />
+                            >
+                                <Box
+                                    component="img"
+                                    src={img}
+                                    alt={`Work ${index}`}
+                                    sx={{
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover',
+                                        transition: 'transform 0.5s ease, filter 0.3s ease',
+                                    }}
+                                />
+                            </Box>
                         </SwiperSlide>
                     ))}
                 </Swiper>
