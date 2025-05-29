@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/system';
+
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Icon1 from '../../assets/home/Icon-01.png';
 import Icon2 from '../../assets/home/Icon-02.png';
@@ -11,13 +14,15 @@ import Icon6 from '../../assets/home/Icon-06.png';
 import Icon7 from '../../assets/home/Icon-07.png';
 import Icon8 from '../../assets/home/Icon-08.png';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const FeatureBox = styled(Box)(({ theme }) => ({
     textAlign: 'center',
     padding: '40px 20px',
     borderRadius: '12px',
     transition: 'all 0.3s ease',
     background: '#fff',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',  // Added subtle boxShadow here
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
@@ -56,6 +61,30 @@ const features = [
 ];
 
 function Features() {
+    const featureRefs = useRef([]);
+
+    useEffect(() => {
+        featureRefs.current.forEach((el, index) => {
+            if (!el) return;
+            gsap.fromTo(
+                el,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    delay: index * 0.1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none',
+                    },
+                }
+            );
+        });
+    }, []);
+
     return (
         <Box sx={{ width: '100%', py: { xs: 4, md: 8 }, px: 2 }}>
             <Container maxWidth="xl">
@@ -78,7 +107,7 @@ function Features() {
                             md={3}
                             sx={{ display: 'flex', justifyContent: 'center' }}
                         >
-                            <FeatureBox>
+                            <FeatureBox ref={(el) => (featureRefs.current[index] = el)}>
                                 <IconWrapper>
                                     <Box
                                         component="img"

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Box, Typography, useTheme, useMediaQuery, Button, Container } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -9,14 +9,44 @@ import Img3 from '../../assets/home/img3.jpg';
 import Img4 from '../../assets/home/img4.jpg';
 import Img5 from '../../assets/home/img5.jpg';
 import { useNavigate } from 'react-router-dom';
-import {Autoplay, Navigation} from "swiper/modules";
+import { Autoplay, Navigation } from 'swiper/modules';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Workshowcase = () => {
     const navigate = useNavigate();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const imageRefs = useRef([]);
 
     const images = [Img1, Img2, Img3, Img4, Img5];
+
+    useEffect(() => {
+        imageRefs.current.forEach((el, i) => {
+            if (!el) return;
+
+            gsap.fromTo(
+                el,
+                {
+                    opacity: 0,
+                    y: 50,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none',
+                    },
+                }
+            );
+        });
+    }, []);
 
     return (
         <Box sx={{ backgroundColor: '#fff', py: 6, px: 4 }}>
@@ -66,8 +96,7 @@ const Workshowcase = () => {
                 </Box>
 
                 <Swiper
-                    modules={[Navigation,Autoplay]}
-                    // navigation
+                    modules={[Navigation, Autoplay]}
                     autoplay={{ delay: 3000, disableOnInteraction: false }}
                     loop={true}
                     spaceBetween={16}
@@ -86,12 +115,13 @@ const Workshowcase = () => {
                             slidesPerView: 4,
                         },
                     }}
-                    style={{ paddingBottom: '40px' }} // for navigation arrows spacing
+                    style={{ paddingBottom: '40px' }}
                 >
                     {images.map((img, index) => (
                         <SwiperSlide key={index}>
                             <Box
                                 component="img"
+                                ref={(el) => (imageRefs.current[index] = el)}
                                 src={img}
                                 alt={`Work ${index}`}
                                 sx={{
