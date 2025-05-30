@@ -19,7 +19,7 @@ import miniImg1 from '../../assets/home/miniImg1.jpg';
 import miniImg2 from '../../assets/home/miniImg2.jpg';
 import miniImg3 from '../../assets/home/miniImg3.avif';
 import miniImg4 from '../../assets/home/miniImg4.avif';
-import {useNavigate} from "react-router-dom";
+import { useNavigate, Link as RouterLink, useLocation } from 'react-router-dom';
 
 const images = [miniImg1, miniImg2, miniImg3, miniImg4];
 
@@ -28,18 +28,20 @@ const navLinks = [
     { label: 'About', href: '/about' },
     { label: 'Services', href: '/services' },
     { label: 'Gallery', href: '/gallery' },
-    { label: 'Contact', href: 'contact' },
+    { label: 'Contact', href: '/contact' },
 ];
 
 function Navbar() {
     const theme = useTheme();
     const navigate = useNavigate();
+    const location = useLocation();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [sidePanelOpen, setSidePanelOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [activeLink, setActiveLink] = useState('Home');
 
     const toggleDrawer = (open) => () => setDrawerOpen(open);
     const toggleSidePanel = (open) => () => setSidePanelOpen(open);
@@ -50,24 +52,28 @@ function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    useEffect(() => {
+        const currentPath = location.pathname;
+        const matchedLink = navLinks.find(link => link.href === currentPath);
+        if (matchedLink) {
+            setActiveLink(matchedLink.label);
+        }
+    }, [location.pathname]);
+
     return (
         <>
-            {/* AppBar */}
             <AppBar
                 elevation={0}
                 sx={{
                     backgroundColor: scrolled ? 'white' : 'transparent',
                     color: scrolled ? 'black' : 'black',
-                    // backdropFilter: 'blur(10px)',
                     px: 3,
                     py: scrolled ? 2 : 3,
-                    // borderBottom: scrolled ? '1px solid rgba(0, 0, 0, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)',
                     transition: 'all 0.3s ease',
                 }}
             >
-                <Toolbar disableGutters sx={{ justifyContent: 'space-between', alignItems: 'center',margin: {xl: "0 172px", lg: "0 10px"}, }}>
-                    {/* Logo */}
-                    <Box display="flex" alignItems="center" onClick={() => navigate('/')} sx={{cursor: 'pointer'}}>
+                <Toolbar disableGutters sx={{ justifyContent: 'space-between', alignItems: 'center', margin: { xl: "0 172px", lg: "0 10px" } }}>
+                    <Box display="flex" alignItems="center" onClick={() => navigate('/')} sx={{ cursor: 'pointer' }}>
                         <Box component="img" src={Logo} alt="Logo" sx={{ width: 75, height: 75, mr: 2, borderRadius: '50%' }} />
                         <Box>
                             <Box sx={{ fontWeight: 700, color: scrolled ? 'black' : 'white', fontSize: '30px', lineHeight: 1 }}>
@@ -95,10 +101,18 @@ function Navbar() {
                             {navLinks.map(({ label, href }) => (
                                 <MuiLink
                                     key={label}
-                                    href={href}
+                                    component={RouterLink}
+                                    to={href}
                                     underline="none"
-                                    // color="white"
-                                    sx={{ fontWeight: 600, fontSize: 18, cursor: 'pointer',color: scrolled ? "#000" : "#fff", }}
+                                    onClick={() => setActiveLink(label)}
+                                    sx={{
+                                        fontWeight: 600,
+                                        fontSize: 18,
+                                        cursor: 'pointer',
+                                        color: scrolled ? "#000" : "#fff",
+                                        borderBottom: activeLink === label ? `2px solid ${scrolled ? '#000' : '#fff'}` : 'none',
+                                        pb: 0.5,
+                                    }}
                                 >
                                     {label}
                                 </MuiLink>
@@ -140,7 +154,6 @@ function Navbar() {
                     },
                 }}
             >
-                {/* Close Button */}
                 <IconButton
                     onClick={toggleDrawer(false)}
                     sx={{
@@ -176,21 +189,28 @@ function Navbar() {
                         <ListItem
                             button
                             key={label}
-                            component="a"
-                            href={href}
-                            sx={{ px: 3 }}
+                            component={RouterLink}
+                            to={href}
+                            onClick={() => {
+                                setActiveLink(label);
+                                toggleDrawer(false)();
+                            }}
+                            sx={{
+                                px: 3,
+                                borderLeft: activeLink === label ? '4px solid #f15423' : 'none',
+                                backgroundColor: activeLink === label ? 'rgba(0,0,0,0.05)' : 'transparent',
+                            }}
                         >
                             <ListItemText
                                 primary={label}
                                 primaryTypographyProps={{
                                     fontWeight: 600,
-                                    color: 'black', // <-- Set text color to black
+                                    color: 'black',
                                 }}
                             />
                         </ListItem>
                     ))}
                 </List>
-
             </Drawer>
 
             {/* Desktop Side Panel */}
@@ -224,7 +244,6 @@ function Navbar() {
                         ×
                     </IconButton>
 
-                    {/* Logo */}
                     <Box display="flex" alignItems="center" mt={4} mb={2}>
                         <Box component="img" src={Logo} alt="Logo" sx={{ width: 85, height: 85, mr: 1 }} />
                         <Box>
@@ -237,25 +256,22 @@ function Navbar() {
                         </Box>
                     </Box>
 
-                    {/* Text Content */}
                     <Typography variant="body2" sx={{ mt: 2, mb: 2 }}>
                         When we go to the office every day, we carry on a time-honored tradition of getting to know our clients on a first-name basis, and personally meeting their insurance needs.
                     </Typography>
 
-                    {/* Image Grid */}
                     <Box display="grid" gridTemplateColumns="repeat(3, 1fr)" gap={1} mt={2}>
                         {Array.from({ length: 6 }).map((_, i) => (
                             <Box
                                 key={i}
                                 component="img"
-                                src={images[i % images.length]} // Cycle through images if more boxes than images
+                                src={images[i % images.length]}
                                 alt={`Gallery ${i}`}
                                 sx={{ width: '100%', height: 90, objectFit: 'cover', borderRadius: 1 }}
                             />
                         ))}
                     </Box>
 
-                    {/* Contact Info */}
                     <Box mt={3}>
                         <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                             📍 Vadadala Post Office, Plot No. 39, Royal Residency, Vadadla,

@@ -13,15 +13,16 @@ function Home() {
     return (
         <>
             <Header/>
-            <Features/>
+            <Whychoseus/>
             <Services />
             <Completedproject/>
             <Delivery/>
-            <Whychoseus/>
-            <Testimonial/>
-            <Workshowcase/>
-
+            <Features/>
             <Exprienceara/>
+            <Workshowcase/>
+            <Testimonial/>
+
+
         </>
     );
 }
