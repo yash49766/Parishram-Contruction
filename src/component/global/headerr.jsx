@@ -99,30 +99,33 @@ function Headerr({ heading, subtext, buttonText, img = Img, path }) {
                 >
                     {subtext}
                 </Typography>
-                <Button
-                    className="fade-up"
-                    variant="contained"
-                    color="primary"
-                    size="large"
-                    onClick={() => navigate(path)}
-                    sx={{
-                        backgroundColor: '#FF5722',
-                        color: '#fff',
-                        fontWeight: 'bold',
-                        textTransform: 'none',
-                        px: { xs: 3, sm: 4 },
-                        py: { xs: 1, sm: 1.5 },
-                        borderRadius: '30px',
-                        fontSize: { xs: '0.9rem', sm: '1rem' },
-                        transition: 'all 0.3s ease',
-                        '&:hover': {
-                            backgroundColor: '#fff',
-                            color:"#000"
-                        },
-                    }}
-                >
-                    {buttonText}
-                </Button>
+                {buttonText && (
+                    <Button
+                        className="fade-up"
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        onClick={() => navigate(path)}
+                        sx={{
+                            backgroundColor: '#FF5722',
+                            color: '#fff',
+                            fontWeight: 'bold',
+                            textTransform: 'none',
+                            px: { xs: 3, sm: 4 },
+                            py: { xs: 1, sm: 1.5 },
+                            borderRadius: '30px',
+                            fontSize: { xs: '0.9rem', sm: '1rem' },
+                            transition: 'all 0.3s ease',
+                            '&:hover': {
+                                backgroundColor: '#fff',
+                                color: "#000",
+                            },
+                        }}
+                    >
+                        {buttonText}
+                    </Button>
+                )}
+
             </Box>
         </Box>
     );

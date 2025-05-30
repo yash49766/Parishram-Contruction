@@ -7,10 +7,12 @@ import img2 from '../../assets/home/portfolio-1.jpg';
 import img3 from '../../assets/home/service-1.jpg';
 import img4 from '../../assets/home/banner-1.jpg';
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import {useNavigate} from "react-router-dom";
 
 const images = [img1, img2, img3, img4];
 
 const CompletedProject = () => {
+    const navigate = useNavigate();
     const containerRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -81,6 +83,7 @@ const CompletedProject = () => {
                         View Our <br /> Completed Projects
                     </Typography>
                     <Button
+                        onClick={()=> navigate('/gallery')}
                         variant="contained"
                         sx={{
                             backgroundColor: '#FF5722',

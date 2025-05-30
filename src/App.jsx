@@ -8,6 +8,7 @@ import Fotter from "./component/global/fotter.jsx";
 import Contact from "./pages/contact/contact.jsx";
 import About from "./pages/about/about.jsx";
 import Service from "./pages/services/service.jsx";
+import Gallery from "./pages/gallery/gallery.jsx";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/services" element={<Service />} />
+                <Route path="/gallery" element={<Gallery />} />
                 <Route path="/contact" element={<Contact />} />
                 {/* Add more routes here */}
             </Routes>
