@@ -8,7 +8,7 @@ function Contact() {
         <>
             <Headerr heading={'Get in Touch'}
                      subtext={'Have questions, feedback, or just want to say hello? We’re here to listen and help.'}
-                     buttonText={'Send Message'}
+                     // buttonText={'Send Message'}
                      img={Img}
             />
         <Contactus/>

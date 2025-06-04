@@ -38,6 +38,7 @@ const RightBox = styled(Box)(({ theme }) => ({
         marginTop: '40px',
         width: '100%',
         maxWidth: '600px',
+        padding: '20px',
         mx: 'auto', // center horizontally
     },
 }));
