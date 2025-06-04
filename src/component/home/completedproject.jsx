@@ -462,38 +462,39 @@ const CompletedProject = () => {
                             ))}
                         </Box>
 
-                        {/* Navigation Dots */}
-                        {/*<Box*/}
-                        {/*    sx={{*/}
-                        {/*        position: "absolute",*/}
-                        {/*        bottom: "24px",*/}
-                        {/*        right: "24px",*/}
-                        {/*        display: "flex",*/}
-                        {/*        flexDirection: "column",*/}
-                        {/*        gap: "12px",*/}
-                        {/*        zIndex: 10,*/}
-                        {/*    }}*/}
-                        {/*>*/}
-                        {/*    {images.map((_, index) => (*/}
-                        {/*        <Box*/}
-                        {/*            key={index}*/}
-                        {/*            onClick={() => scrollToImage(index)}*/}
-                        {/*            sx={{*/}
-                        {/*                width: activeIndex === index ? "16px" : "12px",*/}
-                        {/*                height: activeIndex === index ? "16px" : "12px",*/}
-                        {/*                borderRadius: "50%",*/}
-                        {/*                backgroundColor: activeIndex === index ? "#fff" : "rgba(255, 255, 255, 0.5)",*/}
-                        {/*                cursor: "pointer",*/}
-                        {/*                transition: "all 0.3s ease",*/}
-                        {/*                boxShadow: activeIndex === index ? "0 4px 12px rgba(255, 255, 255, 0.3)" : "none",*/}
-                        {/*                "&:hover": {*/}
-                        {/*                    backgroundColor: activeIndex === index ? "#fff" : "rgba(255, 255, 255, 0.8)",*/}
-                        {/*                    transform: "scale(1.2)",*/}
-                        {/*                },*/}
-                        {/*            }}*/}
-                        {/*        />*/}
-                        {/*    ))}*/}
-                        {/*</Box>*/}
+                        {/* Centered Navigation Dots */}
+                        <Box
+                            sx={{
+                                position: "absolute",
+                                top: "50%",
+                                right: "24px",
+                                transform: "translateY(-50%)",
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "12px",
+                                zIndex: 10,
+                            }}
+                        >
+                            {images.map((_, index) => (
+                                <Box
+                                    key={index}
+                                    onClick={() => scrollToImage(index)}
+                                    sx={{
+                                        width: activeIndex === index ? "16px" : "12px",
+                                        height: activeIndex === index ? "16px" : "12px",
+                                        borderRadius: "50%",
+                                        backgroundColor: activeIndex === index ? "#FF602E" : "rgba(255, 255, 255, 0.5)",
+                                        cursor: "pointer",
+                                        transition: "all 0.3s ease",
+                                        boxShadow: activeIndex === index ? "0 4px 12px rgba(255, 255, 255, 0.3)" : "none",
+                                        "&:hover": {
+                                            backgroundColor: activeIndex === index ? "#fff" : "rgba(255, 255, 255, 0.8)",
+                                            transform: "scale(1.2)",
+                                        },
+                                    }}
+                                />
+                            ))}
+                        </Box>
                     </Box>
                 </Box>
             </Box>

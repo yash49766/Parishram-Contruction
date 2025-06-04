@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import {Box, Typography, Button, LinearProgress, Container} from '@mui/material';
+import {Box, Typography, Button, LinearProgress, Container, useMediaQuery, useTheme} from '@mui/material';
 import img1 from '../../assets/home/miniImg2.jpg';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import gsap from 'gsap';
@@ -10,6 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Whychoseus() {
     const sectionRef = useRef(null);
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const imgRef = useRef(null);
     const textRef = useRef(null);
     const progressRef = useRef(null);
@@ -76,21 +78,22 @@ function Whychoseus() {
         }}>
             <Container maxWidth={'xl'}>
                 <Typography
-                    variant="h4"
-                    component="h2"
+                    variant={isMobile ? "h3" : "h1"}
                     sx={{
-                        display: { xs: 'none', md: 'block' },
-                        textAlign: 'center',
-                        fontSize: { xs: '24px', sm: '32px', md: '40px' },
-                        fontWeight: 600,
+                        fontWeight: 800,
+                        textAlign:"center",
                         mb: 3,
-                        mt: 4,
-                        color: '#000',
-                        lineHeight: 1.3,
+                        background: 'linear-gradient(45deg, #000000 30%, #FF6600 70%)',
+                        backgroundClip: 'text',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        textShadow: '0 0 20px rgba(255, 102, 0, 0.2)',
+                        fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem', lg: '4.5rem' }
                     }}
                 >
                     Why Choose Us
                 </Typography>
+                <Box sx={{ width: '100px', height: '4px', backgroundColor: '#FF6600', mx: 'auto', mb: 4, borderRadius: 2 }} />
 
                 <Box
                     ref={sectionRef}

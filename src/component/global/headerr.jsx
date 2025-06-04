@@ -114,11 +114,13 @@ function Headerr({ heading, subtext, buttonText, img = Img, path }) {
                             px: { xs: 3, sm: 4 },
                             py: { xs: 1, sm: 1.5 },
                             borderRadius: '30px',
+                            border:'2px solid #FF5722',
                             fontSize: { xs: '0.9rem', sm: '1rem' },
                             transition: 'all 0.3s ease',
                             '&:hover': {
                                 backgroundColor: '#fff',
-                                color: "#000",
+                                color: "#FF5722",
+                                border:'2px solid #FF5722'
                             },
                         }}
                     >

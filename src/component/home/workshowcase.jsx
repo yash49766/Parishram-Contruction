@@ -55,19 +55,22 @@ const Workshowcase = () => {
         <Box sx={{ backgroundColor: '#fff', py: 6, px: 4 }}>
             <Container maxWidth="xl">
                 <Typography
-                    variant="h4"
+                    variant={isMobile ? "h3" : "h1"}
                     sx={{
-                        textAlign: 'center',
-                        fontSize: { xs: '24px', sm: '32px', md: '45px' },
-                        fontWeight: 600,
-                        mb: 4,
-                        mt: 4,
-                        color: '#000',
-                        lineHeight: 1.3,
+                        fontWeight: 800,
+                        textAlign:"center",
+                        mb: 3,
+                        background: 'linear-gradient(45deg, #000000 30%, #FF6600 70%)',
+                        backgroundClip: 'text',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        textShadow: '0 0 20px rgba(255, 102, 0, 0.2)',
+                        fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem', lg: '4.5rem' }
                     }}
                 >
                     Our Portfolio
                 </Typography>
+                <Box sx={{ width: '100px', height: '4px', backgroundColor: '#FF6600', mx: 'auto', mb: 4, borderRadius: 2 }} />
 
                 <Box
                     sx={{

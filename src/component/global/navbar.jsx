@@ -14,7 +14,7 @@ import {
     Link as MuiLink,
 } from '@mui/material';
 import { Search, Menu as MenuIcon } from '@mui/icons-material';
-import Logo from '../../assets/global/Your paragraph text (2).png'; // Adjust path as needed
+import Logo from '../../assets/global/Your paragraph text (2).png';
 import miniImg1 from '../../assets/home/miniImg1.jpg';
 import miniImg2 from '../../assets/home/miniImg2.jpg';
 import miniImg3 from '../../assets/home/miniImg3.avif';
@@ -106,12 +106,25 @@ function Navbar() {
                                     underline="none"
                                     onClick={() => setActiveLink(label)}
                                     sx={{
+                                        position: 'relative',
                                         fontWeight: 600,
                                         fontSize: 18,
                                         cursor: 'pointer',
                                         color: scrolled ? "#000" : "#fff",
-                                        borderBottom: activeLink === label ? `2px solid ${scrolled ? '#000' : '#fff'}` : 'none',
                                         pb: 0.5,
+                                        '&::after': {
+                                            content: '""',
+                                            position: 'absolute',
+                                            width: activeLink === label ? '100%' : '0',
+                                            height: '2px',
+                                            bottom: 0,
+                                            left: 0,
+                                            backgroundColor: scrolled ? '#000' : '#fff',
+                                            transition: 'width 0.3s ease-in-out',
+                                        },
+                                        '&:hover::after': {
+                                            width: '100%',
+                                        },
                                     }}
                                 >
                                     {label}

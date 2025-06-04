@@ -184,26 +184,24 @@ export default function Galleryy() {
         <Box sx={{ minHeight: "100vh", background: "#000", py: 4 }}>
             <Container maxWidth="xl">
                 {/* Header */}
-                <Box
-                    textAlign="center"
-                    mb={6}
-                >
+                <Box textAlign="center" mb={6}>
                     <Typography
-                        variant="h2"
-                        component="h1"
-                        gutterBottom
+                        variant={isMobile ? "h3" : "h1"}
                         sx={{
-                            fontWeight: 700,
-                            color: "#fff",
-                            mb: 2,
-                            fontSize: { xs: "2.5rem", md: "3.5rem" },
+                            fontWeight: 800,
+                            mb: 3,
+                            background: 'linear-gradient(45deg, #FFFFFF 30%, #FF6600 70%)',
+                            backgroundClip: 'text',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            textShadow: '0 0 30px rgba(255, 102, 0, 0.3)',
+                            fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' }
                         }}
                     >
                         Our Project Gallery
                     </Typography>
                     <Typography
                         variant="h5"
-                        color="text.secondary"
                         sx={{
                             maxWidth: 800,
                             color: "#bbb",
@@ -426,10 +424,14 @@ export default function Galleryy() {
                             src={zoomedImage}
                             alt="Zoomed"
                             sx={{
-                                maxWidth: "90%",
+                                width: { xs: "90%", sm: "80%", md: "750px" },
+                                height: "auto",
                                 maxHeight: "80vh",
+                                objectFit: "contain",
                                 borderRadius: 3,
                                 boxShadow: "0 0 20px rgba(255, 255, 255, 0.2)",
+                                backgroundColor: "#111",
+                                padding: "10px",
                             }}
                         />
                     </Box>

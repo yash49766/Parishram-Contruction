@@ -125,7 +125,7 @@ function Aboutt() {
 
     return (
         <Box sx={{
-            background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%)',
+            background: '#000',
             minHeight: '100vh',
             position: 'relative',
             overflow: 'hidden'
@@ -161,7 +161,7 @@ function Aboutt() {
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
                             textShadow: '0 0 30px rgba(255, 102, 0, 0.3)',
-                            fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem', lg: '5rem' }
+                            fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem' }
                         }}
                     >
                         About Our Company
@@ -417,15 +417,21 @@ function Aboutt() {
                 <Box sx={{ mb: { xs: 8, md: 12 } }}>
                     <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>
                         <Typography
-                            variant={isMobile ? "h3" : "h2"}
+                            variant={isMobile ? "h3" : "h1"}
                             sx={{
-                                fontWeight: 'bold',
-                                color: 'white',
-                                mb: 2
+                                fontWeight: 800,
+                                mb: 3,
+                                background: 'linear-gradient(45deg, #FFFFFF 30%, #FF6600 70%)',
+                                backgroundClip: 'text',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                                textShadow: '0 0 30px rgba(255, 102, 0, 0.3)',
+                                fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem', lg: '4.5rem' }
                             }}
                         >
                             Our Services
                         </Typography>
+                        <Box sx={{ width: '100px', height: '4px', backgroundColor: '#FF6600', mx: 'auto', mb: 4, borderRadius: 2 }} />
                         <Typography variant="h6" sx={{ color: 'rgba(255, 255, 255, 0.7)', maxWidth: '600px', mx: 'auto' }}>
                             Comprehensive construction solutions tailored to meet your unique needs and exceed expectations
                         </Typography>
@@ -514,15 +520,21 @@ function Aboutt() {
                 <Box sx={{ mb: { xs: 8, md: 12 } }}>
                     <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>
                         <Typography
-                            variant={isMobile ? "h3" : "h2"}
+                            variant={isMobile ? "h3" : "h1"}
                             sx={{
-                                fontWeight: 'bold',
-                                color: 'white',
-                                mb: 2
+                                fontWeight: 800,
+                                mb: 3,
+                                background: 'linear-gradient(45deg, #FFFFFF 30%, #FF6600 70%)',
+                                backgroundClip: 'text',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                                textShadow: '0 0 30px rgba(255, 102, 0, 0.3)',
+                                fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem', lg: '4.5rem' }
                             }}
                         >
                             Meet Our Team
                         </Typography>
+                        <Box sx={{ width: '100px', height: '4px', backgroundColor: '#FF6600', mx: 'auto', mb: 4, borderRadius: 2 }} />
                         <Typography variant="h6" sx={{ color: 'rgba(255, 255, 255, 0.7)', maxWidth: '600px', mx: 'auto' }}>
                             Experienced professionals dedicated to bringing your construction dreams to life
                         </Typography>

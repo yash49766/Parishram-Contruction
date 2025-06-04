@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Box, Tabs, Tab, Typography, Button, Grid, Container } from '@mui/material';
+import {Box, Tabs, Tab, Typography, Button, Grid, Container, useTheme, useMediaQuery} from '@mui/material';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -39,7 +39,8 @@ const tabContent = [
 
 function Services() {
     const [activeTab, setActiveTab] = useState(0);
-
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     // Refs for animation targets
     const containerRef = useRef(null);
     const titleRef = useRef(null);
@@ -111,9 +112,22 @@ function Services() {
         <Box sx={{ py: { xs: 4, md: 8 }, backgroundColor: '#f5f3f1' }}>
             <Container maxWidth="xl">
                 <Box sx={{ textAlign: 'center', mb: 6 }}>
-                    <Typography variant="h3" component="h2" sx={{ fontWeight: 'bold', mb: 2, color: '#333' }}>
-                        Service We're Offering
-                    </Typography>
+                    <Typography
+                        variant={isMobile ? "h3" : "h1"}
+                        sx={{
+                            fontWeight: 800,
+                            textAlign:"center",
+                            mb: 3,
+                            background: 'linear-gradient(45deg, #000000 30%, #FF6600 70%)',
+                            backgroundClip: 'text',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            textShadow: '0 0 20px rgba(255, 102, 0, 0.2)',
+                            fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem', lg: '4.5rem' }
+                        }}
+                    >
+                        Service We're Offering                    </Typography>
+                    <Box sx={{ width: '100px', height: '4px', backgroundColor: '#FF6600', mx: 'auto', mb: 4, borderRadius: 2 }} />
                     <Typography variant="body1" sx={{ color: '#666', maxWidth: '600px', mx: 'auto' }}>
                         Explore our range of professional services tailored to meet all your construction needs.
                     </Typography>

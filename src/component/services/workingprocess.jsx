@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import {Box, Container, Typography} from '@mui/material';
+import {Box, Container, Typography, useMediaQuery, useTheme} from '@mui/material';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -32,7 +32,8 @@ const steps = [
 
 const Workingprocess = () => {
     const containerRef = useRef(null);
-
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     useEffect(() => {
         const stepsElements = containerRef.current.querySelectorAll('.step');
 
@@ -95,12 +96,26 @@ const Workingprocess = () => {
                 ref={containerRef}
                 sx={{ py: { xs: 6, md: 10 }, px: 2, textAlign: 'center' }}
             >
-                <Typography variant="h6" sx={{ color: '#FF6600', fontWeight: 700, mb: 1 }}>
+                <Typography variant="h5" sx={{ color: '#FF6600', fontWeight: 700, mb: 1 }}>
                     WORKING PROCESS
                 </Typography>
-                <Typography variant="h4" sx={{ fontWeight: 700, mb: { xs: 6, md: 8 } }}>
+                <Typography
+                    variant={isMobile ? "h3" : "h1"}
+                    sx={{
+                        fontWeight: 800,
+                        textAlign:"center",
+                        mb: 3,
+                        background: 'linear-gradient(45deg, #000000 30%, #FF6600 70%)',
+                        backgroundClip: 'text',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        textShadow: '0 0 20px rgba(255, 102, 0, 0.2)',
+                        fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem', lg: '4rem' }
+                    }}
+                >
                     Exploration To Processing
                 </Typography>
+                <Box sx={{ width: '100px', height: '4px', backgroundColor: '#FF6600', mx: 'auto', mb: 4, borderRadius: 2 }} />
 
                 <Box
                     sx={{
