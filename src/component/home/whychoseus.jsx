@@ -148,7 +148,7 @@ function Whychoseus() {
                         </Typography>
 
                         <Typography variant="h4" fontWeight="bold" gutterBottom>
-                            Leading the Way in <br />
+                            Leading the Way in
                             Infrastructure & Road Construction
                         </Typography>
 
