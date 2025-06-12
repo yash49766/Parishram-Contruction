@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import 'swiper/css/navigation';
-import Img1 from '../../assets/home/img1.webp';
+import Img1 from '../../assets/home/Screenshot 2025-06-12 101457.png';
 import Img2 from '../../assets/home/img2.jpg';
 import Img3 from '../../assets/home/img3.jpg';
 import Img4 from '../../assets/home/img4.jpg';
@@ -17,11 +17,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const imageData = [
-    { src: Img1, title: 'Residential Project', location: 'Ahmedabad' },
-    { src: Img2, title: 'Highway Roadwork', location: 'Surat' },
-    { src: Img3, title: 'Mall Construction', location: 'Vadodara' },
+    { src: Img1, title: '50 ML RESERVOIR WORK', location: 'Dahej' },
+    { src: Img2, title:'Civil Infrastructure Work', location: 'Surat' },
+    { src: Img3, title:'Road & Highway Construction', location: 'Surat' },
     { src: Img4, title: 'Flyover Bridge', location: 'Rajkot' },
-    { src: Img5, title: 'Corporate Park', location: 'Gandhinagar' }
+    { src: Img5, title: 'Road & Highway Construction', location: 'Surat' }
 ];
 
 const Workshowcase = () => {

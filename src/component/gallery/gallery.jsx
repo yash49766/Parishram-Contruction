@@ -35,8 +35,8 @@ import Img2 from '../../assets/home/img5.jpg'
 import Img3 from '../../assets/home/img2.jpg'
 import Img4 from '../../assets/home/img3.jpg'
 import Img5 from '../../assets/home/img1.webp'
-import Img6 from '../../assets/home/banner-1.jpg'
-import Img7 from '../../assets/home/img4.jpg'
+import Img6 from '../../assets/home/empty-parking-lot-parking-lane-outdoor-public-park_1127-3378.avif'
+import Img7 from '../../assets/home/Screenshot 2025-06-12 101457.png'
 import Img8 from '../../assets/home/rightImage.jpg'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -44,95 +44,96 @@ gsap.registerPlugin(ScrollTrigger)
 const projects = [
     {
         id: 1,
-        title: "Modern Office Complex",
+        title: "Urban Road Construction Project",
         description:
-            "A state-of-the-art 15-story office building featuring sustainable design and smart building technology.",
-        image: Img1,
-        category: "Commercial",
-        location: "Downtown District",
+            "Completed a 4-lane city road with stormwater drainage, footpath, and street lighting for smoother urban mobility.",
+        image: Img2,
+        category: "Infrastructure",
+        location: "Rajkot City",
         year: "2024",
-        type: "Office Building",
+        type: "Road Construction",
     },
     {
         id: 2,
-        title: "Luxury Residential Tower",
+        title: "Commercial Complex Site Development",
         description:
-            "Premium 25-story residential complex with panoramic city views and world-class amenities.",
-        image: Img2,
-        category: "Residential",
-        location: "Uptown Area",
+            "Site preparation, paver block installation, and utility connections for a high-traffic commercial complex.",
+        image: Img1,
+        category: "Commercial",
+        location: "150 Feet Ring Road",
         year: "2023",
-        type: "Residential",
+        type: "Site Work",
     },
     {
         id: 3,
-        title: "Industrial Manufacturing Plant",
+        title: "Industrial Estate Site Work",
         description:
-            "Advanced manufacturing facility with automated systems and eco-friendly operations.",
+            "Handled earthwork, compound wall, drainage and road laying for a new industrial estate zone.",
         image: Img3,
         category: "Industrial",
-        location: "Industrial Zone",
+        location: "Metoda GIDC",
         year: "2024",
-        type: "Manufacturing",
+        type: "Site Development",
     },
     {
         id: 4,
-        title: "Shopping Mall Renovation",
+        title: "Asphalt Road Resurfacing Project",
         description:
-            "Complete modernization of a 200,000 sq ft retail space with contemporary design elements.",
+            "Successfully resurfaced and widened a key city road with asphalt layering, road marking, and proper side slope finishing.",
         image: Img4,
-        category: "Commercial",
-        location: "City Center",
+        category: "Infrastructure",
+        location: "Raiya Road",
         year: "2023",
-        type: "Retail",
+        type: "Road Resurfacing",
     },
     {
         id: 5,
-        title: "Suburban Housing Development",
+        title: "City Road Development",
         description:
-            "Sustainable community of 150 energy-efficient homes with modern architectural design.",
-        image: Img5,
-        category: "Residential",
-        location: "Greenfield Suburbs",
+            "Upgraded inner city road networks with asphalt topping, side drains, and pedestrian walkways.",
+        image: Img7,
+        category: "Urban Development",
+        location: "Dhebar Road",
         year: "2024",
-        type: "Housing",
+        type: "City Road Work",
     },
     {
         id: 6,
-        title: "Highway Infrastructure",
+        title: "Paver Block Commercial Layout",
         description:
-            "Major highway expansion project including bridges, overpasses, and smart traffic systems.",
+            "Installed heavy-duty paver blocks and drainage line for a commercial complex with high foot traffic.",
         image: Img6,
-        category: "Infrastructure",
-        location: "Metro Highway",
+        category: "Commercial",
+        location: "150 Feet Ring Road",
         year: "2023",
-        type: "Transportation",
+        type: "Paver Block",
     },
     {
         id: 7,
-        title: "Corporate Headquarters",
+        title: "50 ML RESERVOIR WORK",
         description:
-            "LEED Platinum certified headquarters building with innovative workspace design.",
+            "Laid underground drainage and sewer system across multiple lanes in a densely populated area.",
         image: Img7,
         category: "Commercial",
-        location: "Business District",
+        location: "",
         year: "2024",
-        type: "Corporate",
+        type: "Drainage",
     },
     {
         id: 8,
-        title: "Warehouse Distribution Center",
+        title: "Grading & Earthwork for Factory Plot",
         description:
-            "Automated distribution facility with advanced logistics and storage systems.",
+            "Completed site grading, leveling, and soil filling for a manufacturing company’s upcoming factory construction.",
         image: Img8,
         category: "Industrial",
-        location: "Logistics Park",
+        location: "Shapar-Veraval",
         year: "2023",
-        type: "Warehouse",
-    },
+        type: "Earthwork",
+    }
+
 ]
 
-const categories = ["All", "Commercial", "Residential", "Industrial", "Infrastructure"]
+const categories = ["All", "Commercial", "Industrial", "Infrastructure"]
 
 const categoryIcons = {
     All: <Business />,
