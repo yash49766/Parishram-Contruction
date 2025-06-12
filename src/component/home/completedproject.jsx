@@ -485,6 +485,7 @@ const CompletedProject = () => {
                                         borderRadius: "50%",
                                         backgroundColor: activeIndex === index ? "#FF602E" : "rgba(255, 255, 255, 0.5)",
                                         cursor: "pointer",
+                                        objectFit:"cover",
                                         transition: "all 0.3s ease",
                                         boxShadow: activeIndex === index ? "0 4px 12px rgba(255, 255, 255, 0.3)" : "none",
                                         "&:hover": {

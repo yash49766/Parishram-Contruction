@@ -148,24 +148,23 @@ function Whychoseus() {
                         </Typography>
 
                         <Typography variant="h4" fontWeight="bold" gutterBottom>
-                            Modern Building <br />
-                            Challenges & Solutions
+                            Leading the Way in <br />
+                            Infrastructure & Road Construction
                         </Typography>
 
                         <Typography variant="body2" color="text.secondary" mb={4}>
-                            One Significant Challenge Is Managing Project Costs In An Era Of
-                            Fluctuating Material Prices And Labor Shortages
+                            In today's fast-paced world, delivering durable, efficient, and safe infrastructure is more critical than ever. We specialize in building roads, highways, and infrastructure that stand the test of time.
                         </Typography>
 
                         {/* Progress Bars */}
                         <Box mb={3} ref={progressRef}>
                             <Box display="flex" justifyContent="space-between" mb={1}>
-                                <Typography>Building Construction</Typography>
-                                <Typography>89%</Typography>
+                                <Typography>Road & Highway Construction</Typography>
+                                <Typography>95%</Typography>
                             </Box>
                             <LinearProgress
                                 variant="determinate"
-                                value={89}
+                                value={95}
                                 sx={{
                                     height: 8,
                                     borderRadius: 5,
@@ -180,11 +179,11 @@ function Whychoseus() {
                         <Box mb={4}>
                             <Box display="flex" justifyContent="space-between" mb={1}>
                                 <Typography>Interiors Design</Typography>
-                                <Typography>79%</Typography>
+                                <Typography>97%</Typography>
                             </Box>
                             <LinearProgress
                                 variant="determinate"
-                                value={79}
+                                value={97}
                                 sx={{
                                     height: 8,
                                     borderRadius: 5,

@@ -8,8 +8,8 @@ import Readytowork from "../../component/services/readytowork.jsx";
 function Service() {
     return (
         <>
-            <Headerr heading={'Let’s Connect!'}
-                     subtext={'Whether you\'re a brand, distributor, or curious snack lover — we’re here to help.'}
+            <Headerr heading={'Our Services'}
+                     subtext={'From innovative product development to seamless distribution — explore how we deliver excellence at every step.'}
                      buttonText={'Contact'}
                      path={'/contact'}
                      img={Img}

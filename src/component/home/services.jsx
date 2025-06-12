@@ -1,41 +1,43 @@
 import React, { useState } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import { ArrowRight } from 'lucide-react';
-import Img1 from '../../assets/home/img3.jpg';
-import Img2 from '../../assets/home/img2.jpg';
-import Img3 from '../../assets/home/img1.webp';
-import Img4 from '../../assets/home/img5.jpg';
+import Img1 from '../../assets/home/view-building-concrete-house_1398-2994.avif';
+import Img2 from '../../assets/home/img5.jpg';
+import Img3 from '../../assets/home/construction-site_53876-14088.avif';
+import Img4 from '../../assets/home/empty-parking-lot-parking-lane-outdoor-public-park_1127-3378.avif';
 import { useNavigate } from "react-router-dom";
 
 const servicesData = [
     {
         id: 1,
-        title: 'Civil infrastructure work ',
+        title: 'Civil Infrastructure Work',
         description:
-            'We provide expert flooring installation services, ensuring high-quality materials and precise craftsmanship for a beautiful and durable finish in your space.',
+            'We deliver large-scale infrastructure solutions including drainage systems, foundations, and public utilities with precision and engineering excellence.',
         img: Img1,
     },
     {
         id: 2,
-        title: 'Commercial Refurbishing',
+        title: 'Road & Highway Construction',
         description:
-            'We offer creative and functional architectural solutions tailored to your needs, blending aesthetics with structural integrity.',
+            'Our team excels in building robust roadways, highways, and pavements using modern machinery and materials for long-lasting, high-traffic endurance.',
         img: Img2,
     },
     {
         id: 3,
-        title: 'Interior design',
+        title: 'Urban Development Projects',
         description:
-            'Our interior design services transform your spaces with elegance, comfort, and functionality, reflecting your unique style.',
+            'From layout planning to utility placement, we undertake complete urban development projects that enhance city functionality and connectivity.',
         img: Img3,
     },
     {
         id: 4,
-        title: 'Road & Infrastructure Development',
+        title: 'Paver Block Work',
         description:
-            'We specialize in house renovations, breathing new life into your property with innovative designs and quality craftsmanship.',
+            'We provide expert paver block installation for roads, parking areas, and landscapes, ensuring a durable and visually appealing finish.',
         img: Img4,
-    },
+    }
+
+
 ];
 
 function Services() {
@@ -184,7 +186,7 @@ function Services() {
                                             borderRadius: '8px',
                                             mb: 1,
                                             objectFit: 'cover',
-                                            maxHeight: { xs: '200px', md: '260px' },
+                                            maxHeight: { xs: '200px', md: '400px' },
                                         }}
                                     />
                                     <Typography

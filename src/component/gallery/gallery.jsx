@@ -304,7 +304,7 @@ export default function Galleryy() {
                                             position: "absolute",
                                             top: 12,
                                             right: 12,
-                                            opacity: hoveredCard === project.id ? 1 : 0,
+                                            opacity: isMobile || hoveredCard === project.id ? 1 : 0,
                                             transition: "opacity 0.3s ease",
                                         }}
                                     >

@@ -7,10 +7,10 @@ import Aboutt from "../../component/about/aboutt.jsx";
 function About() {
     return (
         <>
-            <Headerr heading={'Let’s Connect!'}
-                    subtext={'Whether you\'re a brand, distributor, or curious snack lover — we’re here to help.'}
-                    buttonText={'Contact'}
-                     path={'/contact'}
+            <Headerr heading={'Get to Know Us'}
+                     subtext={'From our humble beginnings to our bold future — explore the story behind our brand.'}
+                     // buttonText={'Our Story'}
+                     // path={'/contact'}
                     img={Img}
             />
             <Aboutt/>
